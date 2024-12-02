@@ -1,22 +1,28 @@
-import Head from "next/head";
 import Image from "next/image";
-import Mountain from "../assets/mountains.png";
-import Image1 from "../assets/image.png";
-import Nature from "../assets/nature.png";
-import Local from "../assets/local.png";
-import Full from "../assets/full.png";
+import Mountain from "../../public/assets/mountains.png";
+import Image1 from "../../public/assets/image.png";
+import Nature from "../../public/assets/nature.png";
+import Local from "../../public/assets/local.png";
+import Full from "../../public/assets/full.png";
+import overlap1 from "../../public/assets/overlap1.png";
+import overlap2 from "../../public/assets/overlap2.png";
+import overlap3 from "../../public/assets/overlap3.png";
 import { FaBusAlt } from "react-icons/fa";
 import { BsTaxiFrontFill } from "react-icons/bs";
 import { BiSolidBriefcase } from "react-icons/bi";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdOutlinePeopleAlt } from "react-icons/md";
 import { SlCalender } from "react-icons/sl";
+import {
+  IoChevronBackCircleOutline,
+  IoChevronForwardCircleOutline,
+} from "react-icons/io5";
 
 export default function Home() {
   return (
-    <div className=" w-screen">
-      <div className="bg-[#FEFCFB] mx-8">
-        <div className="container  p-8">
+    <div className="">
+      <div className="">
+        <div className="container p-8">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2">
               <h1 className="text-4xl font-alegreya-sans text-[52px] font-bold leading-[76.8px] text-black ">
@@ -37,10 +43,11 @@ export default function Home() {
             <div className="md:w-1/2 relative mt-8 md:mt-0">
               <Image
                 alt="Traveler with suitcase"
-                className=" mx-auto"
-                height="400"
+                className=" mx-auto w-auto h-auto"
+                height={400}
                 src={Image1}
-                width="400"
+                width={400}
+                priority
               />
             </div>
           </div>
@@ -56,7 +63,7 @@ export default function Home() {
                 type="text"
               />
             </div>
-            <div className="w-[1px] h-7  bg-[#E8EAEB] mx-4"></div>
+            <div className="w-[1px] h-7 bg-[#E8EAEB] mx-4"></div>
 
             <div className="flex flex-col items-start mb-4 md:mb-0">
               <i className="flex gap-2 fas fa-map-marker-alt text-[#56C2C3] font-bold">
@@ -116,13 +123,16 @@ export default function Home() {
         </section>
         <div className=" min-h-screen py-10">
           <div className="relative mx-auto max-w-7xl">
-            <Image
-              src={Mountain}
-              width={1170}
-              height={500}
-              alt="Mountain"
-              className="w-full h-96 object-cover"
-            />
+            <div className="flex items-center justify-center">
+              <Image
+                src={Mountain}
+                width={1170}
+                height={500}
+                alt="Mountain"
+                className="object-cover"
+                priority
+              />
+            </div>
             <div className="absolute h-[275px] w-[1110px] mx-auto bottom-0 left-0 right-0 translate-y-1/2 bg-[#F9FDFF]  p-5 rounded-lg shadow-custom-green">
               <div className="flex items-center justify-center my-8 gap-[70px]">
                 <div className="flex-row items w-[464px] h-[116px]">
@@ -147,6 +157,7 @@ export default function Home() {
                       height={20}
                       src={Nature}
                       width={20}
+                      priority
                     />
                     Nature & Adventure
                   </div>
@@ -165,10 +176,11 @@ export default function Home() {
                   <div className="bg-[#FFFFFF] h-[40px] w-[130px] shadow-custom-light text-[#5C9BDE] flex items-center justify-center rounded-[8px] font-mulish text-[14px] font-semibold leading-[17.57px] gap-2">
                     <Image
                       alt="Local Visit"
-                      className=""
+                      className="w-auto h-auto"
                       height={20}
                       src={Local}
                       width={20}
+                      priority
                     />
                     Local Visit
                   </div>
@@ -192,6 +204,7 @@ export default function Home() {
                       height={300}
                       alt="Alaska"
                       className="w-full h-40 object-cover transition-transform duration-1000 group-hover:scale-110"
+                      priority
                     />
                   </div>
                   <div className="p-4">
@@ -200,8 +213,6 @@ export default function Home() {
                     </h3>
                     <ul className="mt-2 text-sm text-gray-600 space-y-1">
                       <li>Duration: 2 hours</li>
-                      <li>Transport Facility</li>
-                      <li>Family Plan</li>
                     </ul>
                     <div className="mt-4 flex items-center justify-between">
                       <div>
@@ -211,11 +222,9 @@ export default function Home() {
                         </span>
                       </div>
 
-                      <span className="text-[#56C2C3] font-bold">$35.00</span>
-                    </div>
-                    <div className="mt-2 text-sm flex items-center justify-between">
-                      <span className="text-sm text-gray-500">584 reviews</span>
-                      <span className="text-sm text-gray-500">per person</span>
+                      <span className="text-[#56C2C3] font-bold">
+                        from $35.00
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -223,41 +232,46 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* <Image
-        alt="Local Visit"
-        className="w-full"
-        height={590}
-        src={Full}
-        
-      /> */}
-      <section className="relative bg-gradient-to-r from-purple-500 to-teal-500 h-[590px] flex items-center ">
-        <div className="absolute top-0 left-0 w-full h-full">
+
+      <section className="relative h-[525px] flex items-center mx-auto bg-gradient-to-r from-purple-500 to-teal-500">
+        <div className="absolute inset-0">
           <Image
             src={Full}
             alt="Background"
-            layout="fill"
-            objectFit="cover"
+            // width={1340}
+            height={590}
             className="opacity-50"
+            priority
           />
         </div>
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-8">
-          <div className="flex space-x-4">
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-8 gap-12">
+          <div className=" w-[250px] h-[247px] mr-12">
             <Image
-              src="/image1.jpg" // Replace with actual image path
+              src={overlap1}
               alt="Tour"
-              width={200}
-              height={200}
-              className="rounded-lg shadow-lg"
+              width={250}
+              height={246.9}
+              className="absolute top-0 left-0 rounded-lg z-10"
+              priority
             />
             <Image
-              src="/image2.jpg"
+              src={overlap2}
               alt="Tour"
-              width={200}
-              height={200}
-              className="rounded-lg shadow-lg"
+              width={250}
+              height={246.9}
+              className="absolute top-6 left-6 rounded-lg z-20"
+              priority
+            />
+            <Image
+              src={overlap3}
+              alt="Tour"
+              width={250}
+              height={246.9}
+              className="absolute top-12 left-12 rounded-lg z-30"
+              priority
             />
           </div>
-          <div className="flex-row  ml-9 text-white">
+          <div className="flex-row  ml-12 text-white">
             <span className="bg-[#56C2C3] text-sm px-3 py-1 rounded-full font-bold">
               Trending Now
             </span>
@@ -288,12 +302,21 @@ export default function Home() {
       </section>
 
       {/* Featured Destinations */}
-      <section className="mt-12 max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-4">Featured Destinations</h2>
-        <p className="text-gray-600 mb-8">
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-          sint. Velit officia consequat duis enim velit mollit.
-        </p>
+      <section className="mt-12 bg-[#FEFCFB] max-w-7xl mx-auto px-4">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h2 className="text-3xl font-bold mb-4">Trending Activities</h2>
+            <p className="text-gray-600 mb-8">
+              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              amet sint.<br></br> Velit officia consequat duis enim velit
+              mollit.
+            </p>
+          </div>
+          <div className="flex items-center space-x-4 ">
+            <IoChevronBackCircleOutline className="w-[50px] h-[50px] border-none rounded-full cursor-pointer transition duration-300 text-[#56C2C3]" />
+            <IoChevronForwardCircleOutline className="w-[50px] h-[50px] cursor-pointer border-none text-white rounded-full bg-[#56C2C3] transition duration-300 border" />
+          </div>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {Array(4)
             .fill(0)
@@ -302,34 +325,116 @@ export default function Home() {
                 key={index}
                 className="bg-white rounded-lg shadow-lg overflow-hidden"
               >
-                <Image
-                  src="/mountain.jpg"
-                  alt="Alaska"
-                  width={500}
-                  height={300}
-                  className="w-full h-40 object-cover hover:scale-110 transform transition duration-300"
-                />
+                <div className="relative group">
+                  <Image
+                    src={Mountain}
+                    width={500}
+                    height={300}
+                    alt="Alaska"
+                    className="w-full h-40 object-cover transition-transform duration-1000 group-hover:scale-110"
+                    priority
+                  />
+                </div>
                 <div className="p-4">
                   <h3 className="text-lg font-semibold text-gray-800">
                     Alaska: Westminster to Greenwich River Thames
                   </h3>
                   <ul className="mt-2 text-sm text-gray-600 space-y-1">
                     <li>Duration: 2 hours</li>
-                    <li>Transport Facility</li>
-                    <li>Family Plan</li>
                   </ul>
                   <div className="mt-4 flex items-center justify-between">
-                    <span className="text-green-600 font-bold">$35.00</span>
-                    <span className="text-sm text-gray-500">per person</span>
-                  </div>
-                  <div className="mt-2 text-sm text-gray-500">
-                    ★★★★☆ 584 reviews
+                    <div>
+                      <span className="text-sm text-[#FFA432]">★★★★☆</span>
+                      <span className="text-sm text-gray-500 ml-2">
+                        584 reviews
+                      </span>
+                    </div>
+
+                    <span className="text-[#56C2C3] font-bold">
+                      from $35.00
+                    </span>
                   </div>
                 </div>
               </div>
             ))}
         </div>
       </section>
+      <div className="flex-col items-center bg-[#FEFCFB] justify-center mx-8 p-8 mt-12 gap-5">
+        <div className="flex justify-between items-center mb-6 ">
+          <div>
+            <h2 className="text-2xl font-semibold text-gray-800">
+              From The Gallery
+            </h2>
+            <p className="text-gray-600 mt-2">
+              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              amet sint.
+              <br /> Velit officia consequat duis enim velit mollit
+            </p>
+          </div>
+          <button className="bg-signup-gradient text-white px-4 py-2 rounded-lg ">
+            View All Images
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 ">
+          <Image
+            src={overlap1}
+            alt="A forest with tall trees and a path"
+            width={270}
+            height={320}
+            className="rounded-lg "
+          />
+          <Image
+            src={overlap1}
+            alt="A lake with boats and mountains in the background"
+            width={270}
+            height={320}
+            className="rounded-lg "
+          />
+          <Image
+            src={overlap1}
+            alt="Snow-covered mountains with clouds"
+            width={270}
+            height={320}
+            className="rounded-lg "
+          />
+          <Image
+            src={overlap1}
+            alt="A green field with hills and a cloudy sky"
+            width={270}
+            height={320}
+            className="rounded-lg "
+          />
+          <Image
+            src={overlap1}
+            alt="A river flowing through a forest"
+            width={270}
+            height={320}
+            className="rounded-lg "
+          />
+          <Image
+            src={overlap1}
+            alt="A red bridge in a forest"
+            width={270}
+            height={320}
+            className="rounded-lg "
+          />
+          <Image
+            src={overlap1}
+            alt="A sunset over a lake with trees"
+            width={270}
+            height={320}
+            className="rounded-lg "
+          />
+          <Image
+            src={overlap1}
+            alt="A lake with mountains in the background during sunset"
+            width={270}
+            height={320}
+            className="rounded-lg "
+          />
+        </div>
+      </div>
     </div>
   );
 }

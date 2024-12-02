@@ -21,10 +21,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen ">
+      <body className="min-h-screen overflow-x-hidden">
         <Navbar />
         {/* {children} */}
-        <main className="container">{children}</main>
+        <main className="container w-100vw bg-[#FEFCFB] mx-auto ">
+          {children}
+        </main>
       </body>
     </html>
   );
