@@ -9,40 +9,47 @@ export default function Navbar() {
         </h1>
 
         {/* Navigation Links */}
-        <ul className="hidden md:flex space-x-8">
+        <ul className="hidden md:flex space-x-6">
           <li>
             <a
               href="#"
-              className="text-[16px] font-normal leading-6 text-[#000000] hover:text-[#228B22]"
+              className="font-poppins text-[16px] font-normal leading-6 text-[#000000] hover:text-[#228B22]"
             >
-              Kashmir Tour Package
+              Home
             </a>
           </li>
           <li>
             <a
               href="#"
-              className="text-[16px] font-normal leading-6 text-[#000000] hover:text-[#228B22]"
+              className="font-poppins text-[16px] font-normal leading-6 text-[#000000] hover:text-[#228B22]"
             >
-              Taxi Services
+              About
             </a>
           </li>
           <li>
             <a
               href="#"
-              className="text-[16px] font-normal leading-6 text-[#000000] hover:text-[#228B22]"
+              className="font-poppins text-[16px] font-normal leading-6 text-[#000000] hover:text-[#228B22]"
             >
-              Activities
+              Destination
             </a>
           </li>
           <li>
             <a
               href="#"
-              className="text-[16px] font-normal leading-6 text-[#000000] hover:text-[#228B22]"
+              className="font-poppins text-[16px] font-normal leading-6 text-[#000000] hover:text-[#228B22]"
             >
-              About us
+              Tour
             </a>
           </li>
-          
+          <li>
+            <a
+              href="#"
+              className="font-poppins text-[16px] font-normal leading-6 text-[#000000] hover:text-[#228B22]"
+            >
+              Blog
+            </a>
+          </li>
         </ul>
 
         {/* Buttons */}

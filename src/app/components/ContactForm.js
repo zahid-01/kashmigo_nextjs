@@ -1,16 +1,14 @@
 "use client";
 import { useState } from "react";
-
 function ContactForm() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [serviceType, setServiceType] = useState('');
-  const [budget, setBudget] = useState('');
-  const [message, setMessage] = useState('');
-
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [serviceType, setServiceType] = useState("");
+  const [budget, setBudget] = useState("");
+  const [message, setMessage] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Form submitted:', {
+    console.log("Form submitted:", {
       name,
       email,
       serviceType,
@@ -18,36 +16,43 @@ function ContactForm() {
       message,
     });
   };
-
   return (
     <div className="container p-8 mx-auto max-w-screen-xl bg-[#FEFCFB]">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-[135px] items-start mx-auto">
         {/* Left Column: Heading and Subheading */}
         <div className="ml-[24px] flex flex-col gap-[54px]">
-            <div className="flex flex-col gap-[20px]">
-
-          <h1 className="text-4xl font-bold mb-4 text-green-500">Let's Talk</h1>
-          <p className="text-lg">
-            Planning Your Next Adventure? Let's Make It Unforgettable! Have a travel dream or destination in mind? 
-            Reach out to us—we'd love to bring your journey to life with seamless planning and bookings. 🌎✈️
-          </p>
-            </div>
+          <div className="flex flex-col gap-[20px]">
+            <h1 className="text-4xl font-bold mb-4 text-green-500">
+              Let's Talk
+            </h1>
+            <p className="text-lg">
+              Planning Your Next Adventure? Let's Make It Unforgettable! Have a
+              travel dream or destination in mind? Reach out to us—we'd love to
+              bring your journey to life with seamless planning and bookings.
+              :earth_americas::aeroplane:
+            </p>
+          </div>
           <div className="flex flex-col h-[85px]">
             <p className="text-[36px] font-[500]">EMAIL</p>
-            <a href="mailto:KashmiGo@gmail.com" className="text-blue-500 text-[18px]">
-    KashmiGo@gmail.com
-  </a>
+            <a
+              href="mailto:KashmiGo@gmail.com"
+              className="text-blue-500 text-[18px]"
+            >
+              KashmiGo@gmail.com
+            </a>
           </div>
           <div className="flex flex-col h-[85px] w-[185px]">
             <p className="text-[36px] font-[500]">Phone No</p>
             <a href="tel:+1234567890" className="text-blue-500 text-[18px]">
-    +919999999999
-  </a>
+              +919999999999
+            </a>
           </div>
         </div>
-
         {/* Right Column: Form */}
-        <form onSubmit={handleSubmit} className="bg-white shadow-lg p-6 rounded-lg">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white shadow-lg p-6 rounded-lg"
+        >
           <div className="mb-4">
             <label htmlFor="name" className="block text-lg font-medium mb-2">
               Name
@@ -75,7 +80,10 @@ function ContactForm() {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="ServiceType" className="block text-lg font-medium mb-2">
+            <label
+              htmlFor="ServiceType"
+              className="block text-lg font-medium mb-2"
+            >
               What service are you interested in?
             </label>
             <select
@@ -127,5 +135,4 @@ function ContactForm() {
     </div>
   );
 }
-
 export default ContactForm;
