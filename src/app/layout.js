@@ -13,11 +13,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+
       <body className={alegreya.className}>
         <Navbar />
      
         {/* {children} */}
-        <main className="container mx-auto">{children}</main>
+        <main className="container w-100vw bg-[#FEFCFB] mx-auto ">
+          {children}
+        </main>
 
       </body>
     </html>
