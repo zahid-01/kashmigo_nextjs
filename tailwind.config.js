@@ -7,11 +7,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        mulish: ["Mulish", "sans-serif"],
-        poppins: ["Poppins", "sans-serif"],
-        "alegreya-sans": ["Alegreya Sans", "sans-serif"],
-      },
+      
       boxShadow: {
         "custom-light": "0px 4px 10px 0px rgba(0, 0, 0, 0.08)",
         "custom-green": "0px 4px 6px 0px #98FF9833",

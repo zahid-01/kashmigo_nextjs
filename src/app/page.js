@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Image from "next/image";
 import Mountain from "../../public/assets/Mountains.png";
 import Image1 from "../../public/assets/Image.png";
@@ -10,98 +9,49 @@ import { BiSolidBriefcase } from "react-icons/bi";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdOutlinePeopleAlt } from "react-icons/md";
 import { SlCalender } from "react-icons/sl";
+import ContactForm from "./components/ContactForm";
 
 export default function Home() {
   return (
-    <div className="bg-[#FEFCFB]">
-      {/* <Head>
-        <title>Travel Adventure</title>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-          rel="stylesheet"
-        />
-      </Head> */}
-      <header className="container mx-auto p-8">
+
+      <>
+      <div className="container mx-auto p-8 bg-[#FEFCFB]">
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2">
-            <h1 className="text-4xl font-alegreya-sans text-[52px] font-bold leading-[76.8px] text-black ">
+            <h1 className="text-4xl text-[52px] font-bold leading-[76.8px] text-black ">
               Wander Beyond Limits,
               <br />
               Unleash Your Next
               <br />
               <span className="text-[#228B22]">Great Adventure.</span>
             </h1>
-            <p className="mt-4 text-[#000000 font-poppins text-[20px] font-normal leading-[40px] text-left">
+            <p className="mt-4 text-[#000000] text-[20px] font-normal leading-[40px] text-left">
               A Team of experienced tourism professionals will <br /> provide
-              you with the best advice and tips for your <br /> desire place.
+              you with the best advice and tips for your <br /> desired place.
             </p>
-            <button className="mt-6 w-[178px] h-[60px] text-[#228B22] border border-[#228B22] font-alegreya-sans text-[18px] font-bold leading-[21.6px] rounded">
+            <button className="mt-6 w-[178px] h-[60px] text-[#228B22] border border-[#228B22] text-[18px] font-bold leading-[21.6px] rounded">
               Discover Now
             </button>
           </div>
           <div className="md:w-1/2 relative mt-8 md:mt-0">
             <Image
               alt="Traveler with suitcase"
-              className=" mx-auto"
+              className="mx-auto"
               height="400"
               src={Image1}
               width="400"
-            />
+              />
           </div>
         </div>
-        <div className="mt-8 mx-24 p-4 bg-[#FFFFFF] rounded-lg flex flex-col md:flex-row items-center justify-between shadow-custom-light">
-          <div className="flex flex-col items-start mb-4 md:mb-0">
-            <i className="flex gap-2 fas fa-map-marker-alt text-[#56C2C3] font-bold">
-              <FaLocationDot className="text-[#56C2C3] font-alegreya-sans text-[18px] font-bold leading-[21.6px]" />
-              Location
-            </i>
-            <input
-              className="mt-2 ml-4 p-2 rounded w-full focus:outline-none"
-              placeholder="Search For A Destination"
-              type="text"
-            />
-          </div>
-          <div className="w-[1px] h-7  bg-[#E8EAEB] mx-4"></div>
+      </div>
 
-          <div className="flex flex-col items-start mb-4 md:mb-0">
-            <i className="flex gap-2 fas fa-map-marker-alt text-[#56C2C3] font-bold">
-              <MdOutlinePeopleAlt className="text-[#56C2C3] font-alegreya-sans text-[18px] font-bold leading-[21.6px]" />
-              Guests
-            </i>
-            <input
-              className="mt-2 ml-4 p-2 rounded w-full focus:outline-none"
-              placeholder="How many Guests?"
-              type="text"
-            />
-          </div>
-          <div className="w-[1px] h-7 bg-[#E8EAEB] mx-4"></div>
-          <div className="flex flex-col items-start mb-4 md:mb-0">
-            <i className="flex gap-2 fas fa-map-marker-alt text-[#56C2C3] font-bold">
-              <SlCalender className="text-[#56C2C3] font-alegreya-sans text-[18px] font-bold leading-[21.6px]" />
-              Date
-            </i>
-            <input
-              className="mt-2 ml-4 p-2 rounded w-full focus:outline-none"
-              placeholder="Pick a date"
-              type="text"
-            />
-          </div>
-          <button className="px-6 py-3 bg-signup-gradient text-white font-bold rounded-full">
-            Search
-          </button>
-        </div>
-      </header>
       <section className="container mx-auto p-8">
         <h2 className="text-3xl font-bold text-center">
           Explore Popular Cities
         </h2>
-        <p className="text-center font-mulish text-[16px] text-[#778088] font-medium leading-[17.57px] mt-4">
+        <p className="text-center text-[16px] text-[#778088] font-medium leading-[17.57px] mt-4">
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-          sint. Velit officia <br></br>consequat duis enim velit mollit
+          sint. Velit officia <br /> consequat duis enim velit mollit
         </p>
         <div className="flex flex-wrap justify-center mt-6">
           {[
@@ -115,16 +65,16 @@ export default function Home() {
             "Gurez",
           ].map((city) => (
             <button
-              className="m-2 px-4 py-2 bg-white border rounded-full text-green-500 font-bold"
-              key={city}
+            className="m-2 px-4 py-2 bg-white border rounded-full text-green-500 font-bold"
+            key={city}
             >
               {city}
             </button>
-          ))} 
+          ))}
         </div>
       </section>
 
-      <div className=" min-h-screen py-10">
+      <div className="min-h-screen py-10">
         <div className="relative mx-auto max-w-7xl">
           <Image
             src={Mountain}
@@ -132,8 +82,8 @@ export default function Home() {
             height={500}
             alt="Mountain"
             className="w-full h-96 object-cover"
-          />
-          <div className="absolute h-[275px] w-[1110px] mx-auto bottom-0 left-0 right-0 translate-y-1/2 bg-[#F9FDFF]  p-5 rounded-lg shadow-custom-green">
+            />
+          <div className="absolute h-[275px] w-[1110px] mx-auto bottom-0 left-0 right-0 translate-y-1/2 bg-[#F9FDFF] p-5 rounded-lg shadow-custom-green">
             <div className="flex items-center justify-center my-8 gap-[70px]">
               <div className="flex-row items w-[464px] h-[116px]">
                 <h1 className="text-4xl font-bold">Gulmarg</h1>
@@ -144,7 +94,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="mt-0 mr-11 grid grid-cols-2 gap-2">
-                <div className="col-span-2 h-[40px] w-[212px] flex items-center justify-center gap-[6px] bg-[#FFFFFF] shadow-custom-light text-[#D176E0]  rounded-[8px] font-mulish text-[14px] font-semibold leading-[17.57px]">
+                <div className="col-span-2 h-[40px] w-[212px] flex items-center justify-center gap-[6px] bg-[#FFFFFF] shadow-custom-light text-[#D176E0] rounded-[8px] font-mulish text-[14px] font-semibold leading-[17.57px]">
                   <span>
                     <FaBusAlt />
                   </span>
@@ -157,7 +107,7 @@ export default function Home() {
                     height={20}
                     src={Nature}
                     width={20}
-                  />
+                    />
                   Nature & Adventure
                 </div>
                 <div className="bg-[#FFFFFF] h-[40px] w-[224px] shadow-custom-light text-[#E4B613] flex items-center justify-center gap-[6px] rounded-[8px] font-mulish text-[14px] font-semibold leading-[17.57px]">
@@ -179,7 +129,7 @@ export default function Home() {
                     height={20}
                     src={Local}
                     width={20}
-                  />
+                    />
                   Local Visit
                 </div>
               </div>
@@ -194,7 +144,7 @@ export default function Home() {
               <div
                 key={index}
                 className="bg-white rounded-lg shadow-md overflow-hidden"
-              >
+                >
                 <div className="relative group">
                   <Image
                     src={Mountain}
@@ -210,8 +160,7 @@ export default function Home() {
                   </h3>
                   <ul className="mt-2 text-sm text-gray-600 space-y-1">
                     <li>Duration: 2 hours</li>
-                    <li>Transport Facility</li>
-                    <li>Family Plan</li>
+                   
                   </ul>
                   <div className="mt-4 flex items-center justify-between">
                     <div>
@@ -223,15 +172,14 @@ export default function Home() {
 
                     <span className="text-[#56C2C3] font-bold">$35.00</span>
                   </div>
-                  <div className="mt-2 text-sm flex items-center justify-between">
-                    <span className="text-sm text-gray-500">584 reviews</span>
-                    <span className="text-sm text-gray-500">per person</span>
-                  </div>
+                  
                 </div>
               </div>
             ))}
         </div>
       </div>
-    </div>
+      <ContactForm/>
+
+                    </>
   );
 }
