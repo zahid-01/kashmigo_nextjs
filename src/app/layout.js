@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-screen ">
         <Navbar />
         {/* {children} */}
-        <main className="container mx-auto p-4">{children}</main>
+        <main className="container">{children}</main>
       </body>
     </html>
   );

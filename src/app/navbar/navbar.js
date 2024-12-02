@@ -1,7 +1,7 @@
 // app/navbar/navbar.js
 export default function Navbar() {
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="relative bg-white shadow-md">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
         <h1 className="font-caveat-brush text-[28px] font-normal leading-[35.28px] ">
