@@ -7,6 +7,7 @@ import Full from "../../public/assets/full.png";
 import overlap1 from "../../public/assets/overlap1.png";
 import overlap2 from "../../public/assets/overlap2.png";
 import overlap3 from "../../public/assets/overlap3.png";
+
 import { FaBusAlt } from "react-icons/fa";
 import { BsTaxiFrontFill } from "react-icons/bs";
 import { BiSolidBriefcase } from "react-icons/bi";
@@ -50,48 +51,46 @@ export default function Home() {
                 priority
               />
             </div>
+
           </div>
-          <div className="mt-12 mx-24 p-4 bg-[#FFFFFF] rounded-lg flex flex-col md:flex-row items-center justify-between shadow-custom-light">
-            <div className="flex flex-col items-start mb-4 md:mb-0">
-              <i className="flex gap-2 fas fa-map-marker-alt text-[#56C2C3] font-bold">
-                <FaLocationDot className="text-[#56C2C3] font-alegreya-sans text-[18px] font-bold leading-[21.6px]" />
-                Location
-              </i>
-              <input
-                className="mt-2 ml-4 p-2 rounded w-full focus:outline-none"
-                placeholder="Search For A Destination"
-                type="text"
+          <div className="md:w-1/2 relative mt-8 md:mt-0">
+            <Image
+              alt="Traveler with suitcase"
+              className="mx-auto"
+              height="400"
+              src={Image1}
+              width="400"
               />
             </div>
             <div className="w-[1px] h-7 bg-[#E8EAEB] mx-4"></div>
 
-            <div className="flex flex-col items-start mb-4 md:mb-0">
-              <i className="flex gap-2 fas fa-map-marker-alt text-[#56C2C3] font-bold">
-                <MdOutlinePeopleAlt className="text-[#56C2C3] font-alegreya-sans text-[18px] font-bold leading-[21.6px]" />
-                Guests
-              </i>
-              <input
-                className="mt-2 ml-4 p-2 rounded w-full focus:outline-none"
-                placeholder="How many Guests?"
-                type="text"
-              />
-            </div>
-            <div className="w-[1px] h-7 bg-[#E8EAEB] mx-4"></div>
-            <div className="flex flex-col items-start mb-4 md:mb-0">
-              <i className="flex gap-2 fas fa-map-marker-alt text-[#56C2C3] font-bold">
-                <SlCalender className="text-[#56C2C3] font-alegreya-sans text-[18px] font-bold leading-[21.6px]" />
-                Date
-              </i>
-              <input
-                className="mt-2 ml-4 p-2 rounded w-full focus:outline-none"
-                placeholder="Pick a date"
-                type="text"
-              />
-            </div>
-            <button className="px-6 py-3 bg-signup-gradient text-white font-bold rounded-full">
-              Search
+
+      <section className="container mx-auto p-8">
+        <h2 className="text-3xl font-bold text-center">
+          Explore Popular Cities
+        </h2>
+        <p className="text-center text-[16px] text-[#778088] font-medium leading-[17.57px] mt-4">
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+          sint. Velit officia <br /> consequat duis enim velit mollit
+        </p>
+        <div className="flex flex-wrap justify-center mt-6">
+          {[
+            "Srinagar",
+            "Jammu",
+            "Katra",
+            "Gulmarg",
+            "Pahalgam",
+            "Sonamarg",
+            "Doodhpathri",
+            "Gurez",
+          ].map((city) => (
+            <button
+            className="m-2 px-4 py-2 bg-white border rounded-full text-green-500 font-bold"
+            key={city}
+            >
+              {city}
             </button>
-          </div>
+          ))}
         </div>
         <section className="container mx-auto p-8">
           <h2 className="text-3xl font-bold text-center">
@@ -286,20 +285,11 @@ export default function Home() {
                 <span>4.9</span>
                 <i className="fas fa-star text-yellow-400 mx-1"></i>
                 <span className="text-gray-200">(300 reviews)</span>
+
               </div>
             </div>
-            <p className="mt-5">
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-              <br />
-              amet sint. Velit officia consequat duis enim velit mollit.
-              Exercitation <br /> veniam consequat sunt nostrud amet.
-            </p>
-            <button className="w-[200px] h-[50px] bg-signup-gradient px-6 py-3 text-white font-bold rounded-full mt-8">
-              Book Now
-            </button>
           </div>
         </div>
-      </section>
 
       {/* Featured Destinations */}
       <section className="mt-12 bg-[#FEFCFB] max-w-7xl mx-auto px-4">
@@ -318,6 +308,7 @@ export default function Home() {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
           {Array(4)
             .fill(0)
             .map((_, index) => (
@@ -325,6 +316,7 @@ export default function Home() {
                 key={index}
                 className="bg-white rounded-lg shadow-lg overflow-hidden"
               >
+
                 <div className="relative group">
                   <Image
                     src={Mountain}
@@ -333,6 +325,7 @@ export default function Home() {
                     alt="Alaska"
                     className="w-full h-40 object-cover transition-transform duration-1000 group-hover:scale-110"
                     priority
+
                   />
                 </div>
                 <div className="p-4">
@@ -341,6 +334,7 @@ export default function Home() {
                   </h3>
                   <ul className="mt-2 text-sm text-gray-600 space-y-1">
                     <li>Duration: 2 hours</li>
+
                   </ul>
                   <div className="mt-4 flex items-center justify-between">
                     <div>
@@ -353,7 +347,9 @@ export default function Home() {
                     <span className="text-[#56C2C3] font-bold">
                       from $35.00
                     </span>
+
                   </div>
+                  
                 </div>
               </div>
             ))}
@@ -436,5 +432,6 @@ export default function Home() {
         </div>
       </div>
     </div>
+
   );
 }
