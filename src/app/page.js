@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import Mountain from "../../public/assets/mountains.png";
 import Image1 from "../../public/assets/image.png";
 import Nature from "../../public/assets/nature.png";
