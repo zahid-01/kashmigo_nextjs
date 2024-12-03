@@ -7,7 +7,7 @@ import peso from "../../../public/assets/peso.png";
 
 export default function SignupPage() {
   return (
-    <div className="flex items-center justify-center bg-white  h-screen mt-[100px]">
+    <div className="flex items-center justify-center bg-white  h-screen">
       <div className="flex flex-col md:flex-row mx-auto bg-white rounded-lg shadow-custom-green overflow-hidden">
         <div className="hidden md:flex items-center justify-center">
           <Image
