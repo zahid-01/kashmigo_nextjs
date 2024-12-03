@@ -218,7 +218,9 @@ export default function Home() {
             <div className="mt-[200px] mx-auto max-w-7xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4">
               {tours.length > 0 &&
                 tours.map((tour, index) => (
-                  <TourCards tour={tour} key={index} />
+                  <Link href="/city-tour" key={index} passHref>
+                    <TourCards tour={tour} />
+                  </Link>
                 ))}
             </div>
           </div>
