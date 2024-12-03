@@ -43,10 +43,11 @@ export default function Home() {
                   Discover Now
                 </button>
               </div>
-              <div className="md:w-1/2 relative mt-8 md:mt-0">
+              <div className="md:w-1/2 mt-8 md:mt-0">
                 <Image
                   alt="Traveler with suitcase"
                   className=" mx-auto w-auto h-auto"
+                  layout="intrinsic"
                   height={400}
                   src={Image1}
                   width={400}

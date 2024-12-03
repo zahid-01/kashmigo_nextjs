@@ -13,43 +13,36 @@ export default function Navbar() {
           <li>
             <a
               href="#"
-              className="font-poppins text-[16px] font-normal leading-6 text-[#000000] hover:text-[#228B22]"
+              className="text-[16px] font-bold leading-6 text-[#000000] hover:text-[#228B22]"
             >
-              Home
+              Kashmir Tour Packages
             </a>
           </li>
           <li>
             <a
               href="#"
-              className="font-poppins text-[16px] font-normal leading-6 text-[#000000] hover:text-[#228B22]"
+              className="text-[16px] font-bold leading-6 text-[#000000] hover:text-[#228B22]"
             >
-              About
+              Taxi Services
             </a>
           </li>
           <li>
             <a
               href="#"
-              className="font-poppins text-[16px] font-normal leading-6 text-[#000000] hover:text-[#228B22]"
+              className="text-[16px] font-bold leading-6 text-[#000000] hover:text-[#228B22]"
             >
-              Destination
+              Activities
             </a>
           </li>
           <li>
             <a
               href="#"
-              className="font-poppins text-[16px] font-normal leading-6 text-[#000000] hover:text-[#228B22]"
+              className="text-[16px] font-bold leading-6 text-[#000000] hover:text-[#228B22]"
             >
-              Tour
+              About us
             </a>
           </li>
-          <li>
-            <a
-              href="#"
-              className="font-poppins text-[16px] font-normal leading-6 text-[#000000] hover:text-[#228B22]"
-            >
-              Blog
-            </a>
-          </li>
+          
         </ul>
 
         {/* Buttons */}
