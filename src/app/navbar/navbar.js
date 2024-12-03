@@ -1,4 +1,7 @@
 // app/navbar/navbar.js
+'use client'
+import Link from "next/link";
+
 export default function Navbar() {
   return (
     <nav className="relative bg-white shadow-md">
@@ -47,10 +50,10 @@ export default function Navbar() {
 
         {/* Buttons */}
         <div className="hidden md:flex space-x-4">
-          <button className="px-4 py-2 text-[#228B22]  ">Login</button>
-          <button className="px-4 py-2 text-white bg-signup-gradient rounded ">
+          <Link className="px-4 py-2 text-[#228B22]" href="/login">Login</Link>
+          <Link href='/signup' className="px-4 py-2 text-white bg-signup-gradient rounded ">
             Signup
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
