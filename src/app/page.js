@@ -1,6 +1,4 @@
-"use client";
 import Image from "next/image";
-import Link from "next/link";
 import Mountain from "../../public/assets/mountains.png";
 import Image1 from "../../public/assets/image.png";
 import Nature from "../../public/assets/nature.png";
@@ -20,30 +18,11 @@ import {
   IoChevronForwardCircleOutline,
 } from "react-icons/io5";
 import ContactForm from "./components/ContactForm";
-import TourCards from "./components/TourCards";
-import Navbar from "./navbar/navbar";
-import { useEffect, useState } from "react";
-import { BASE_URI } from "./web/beConfig";
-import axios from "axios";
 
 export default function Home() {
-  const [tours, setTours] = useState([]);
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: `${BASE_URI}/tours/package`,
-    }).then(
-      (res) => {
-        console.log(res.data.data);
-        setTours(res.data.data);
-      },
-      (err) => {}
-    );
-  }, []);
+  console.log("Home");
   return (
     <>
-      <Navbar />
-
       <div className="">
         <div className="">
           <div className="container p-8">
@@ -80,7 +59,7 @@ export default function Home() {
             <div className="mt-12 mx-24 p-4 bg-[#FFFFFF] rounded-lg flex flex-col md:flex-row items-center justify-between shadow-custom-light">
               <div className="flex flex-col items-start mb-4 md:mb-0">
                 <i className="flex gap-2 fas fa-map-marker-alt text-[#56C2C3] font-bold">
-                  <FaLocationDot className="text-[#56C2C3] font-alegreya-sans text-[18px] font-bold leading-[21.6px]" />
+                  <FaLocationDot className="text-[#56C2C3] text-[18px] font-bold leading-[21.6px]" />
                   Location
                 </i>
                 <input
@@ -93,7 +72,7 @@ export default function Home() {
 
               <div className="flex flex-col items-start mb-4 md:mb-0">
                 <i className="flex gap-2 fas fa-map-marker-alt text-[#56C2C3] font-bold">
-                  <MdOutlinePeopleAlt className="text-[#56C2C3] font-alegreya-sans text-[18px] font-bold leading-[21.6px]" />
+                  <MdOutlinePeopleAlt className="text-[#56C2C3] text-[18px] font-bold leading-[21.6px]" />
                   Guests
                 </i>
                 <input
@@ -215,10 +194,46 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
             <div className="mt-[200px] mx-auto max-w-7xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4">
-              {tours.length > 0 &&
-                tours.map((tour, index) => (
-                  <TourCards tour={tour} key={index} />
+              {Array(4)
+                .fill(0)
+                .map((_, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-lg shadow-md overflow-hidden"
+                  >
+                    <div className="relative group">
+                      <Image
+                        src={Mountain}
+                        width={500}
+                        height={300}
+                        alt="Alaska"
+                        className="w-full h-40 object-cover transition-transform duration-1000 group-hover:scale-110"
+                        priority
+                      />
+                    </div>
+                    <div className="p-4">
+                      <h3 className="text-lg font-semibold text-gray-800">
+                        Alaska: Westminster to Greenwich River Thames
+                      </h3>
+                      <ul className="mt-2 text-sm text-gray-600 space-y-1">
+                        <li>Duration: 2 hours</li>
+                      </ul>
+                      <div className="mt-4 flex items-center justify-between">
+                        <div>
+                          <span className="text-sm text-[#FFA432]">★★★★☆</span>
+                          <span className="text-sm text-gray-500 ml-2">
+                            584 reviews
+                          </span>
+                        </div>
+
+                        <span className="text-[#56C2C3] font-bold">
+                          from $35.00
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 ))}
             </div>
           </div>
@@ -294,6 +309,20 @@ export default function Home() {
 
         {/* Featured Destinations */}
         <section className="mt-12 bg-[#FEFCFB] max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h2 className="text-3xl font-bold mb-4">Trending Activities</h2>
+              <p className="text-gray-600 mb-8">
+                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+                amet sint.<br></br> Velit officia consequat duis enim velit
+                mollit.
+              </p>
+            </div>
+            <div className="flex items-center space-x-4 ">
+              <IoChevronBackCircleOutline className="w-[50px] h-[50px] border-none rounded-full cursor-pointer transition duration-300 text-[#56C2C3]" />
+              <IoChevronForwardCircleOutline className="w-[50px] h-[50px] cursor-pointer border-none text-white rounded-full bg-[#56C2C3] transition duration-300 border" />
+            </div>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {Array(4)
               .fill(0)
@@ -317,7 +346,7 @@ export default function Home() {
                       Alaska: Westminster to Greenwich River Thames
                     </h3>
                     <ul className="mt-2 text-sm text-gray-600 space-y-1">
-                      <li>Duration: hours</li>
+                      <li>Duration: 2 hours</li>
                     </ul>
                     <div className="mt-4 flex items-center justify-between">
                       <div>
