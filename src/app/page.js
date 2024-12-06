@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Mountain from "../../public/assets/mountains.png";
 import Image1 from "../../public/assets/image.png";
@@ -18,8 +19,24 @@ import {
   IoChevronForwardCircleOutline,
 } from "react-icons/io5";
 import ContactForm from "./components/ContactForm";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { BASE_URI } from "./web/beConfig";
 
 export default function Home() {
+  const [tours, setTours] = useState([]);
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: `${BASE_URI}/tours/package`,
+    }).then(
+      (res) => {
+        console.log(res.data.data);
+        setTours(res.data.data);
+      },
+      (err) => {}
+    );
+  }, []);
   console.log("Home");
   return (
     <>
@@ -196,7 +213,6 @@ export default function Home() {
             </div>
 
             <div className="mt-[200px] mx-auto max-w-7xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4">
-
               {tours.length > 0 &&
                 tours.map((tour, index) => (
                   <Link href="/city-tour" key={index} passHref>
