@@ -22,6 +22,8 @@ import ContactForm from "./components/ContactForm";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BASE_URI } from "./web/beConfig";
+import TourCards from "./components/TourCards";
+import Link from "next/link";
 
 export default function Home() {
   const [tours, setTours] = useState([]);
