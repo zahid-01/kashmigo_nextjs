@@ -1,4 +1,3 @@
-import axios from "axios";
 import Image from "next/image";
 import Mountain from "../../../public/assets/mountains.png";
 
