@@ -11,8 +11,6 @@ export default function Navbar() {
   const router = useRouter();
   const user = useSelector((state) => state.user);
 
-  console.log("43wyhjuyrehrgtfqs", user?.fullName);
-
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
@@ -23,12 +21,13 @@ export default function Navbar() {
   return (
     <nav className="relative bg-white shadow-md">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <h1 className="font-caveat-brush text-[28px] font-normal leading-[35.28px]">
+        <Link
+          className="font-caveat-brush text-[28px] font-normal leading-[35.28px]"
+          href="/"
+        >
           Kashmi-Go
-        </h1>
+        </Link>
 
-        {/* Desktop Navigation Links */}
         <ul className="hidden md:flex space-x-6">
           <li>
             <a
@@ -64,7 +63,6 @@ export default function Navbar() {
           </li>
         </ul>
 
-        {/* User Info and Buttons */}
         <div className="hidden md:flex space-x-4">
           {user ? (
             <>
@@ -93,11 +91,10 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="text-blue-600 focus:outline-none"
+            className="text-green-600 focus:outline-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +114,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden bg-white shadow-md">
           <ul className="space-y-4 px-4 py-2">
