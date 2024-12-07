@@ -15,7 +15,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={alegreya.className}>
-
         <main className="container w-100vw bg-[#FEFCFB] mx-auto ">
           {children}
         </main>

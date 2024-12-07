@@ -42,8 +42,6 @@ export default function Home() {
   }, []);
   return (
     <>
-      <Navbar />
-
       <div className="">
         <div className="">
           <div className="container p-8">
