@@ -1,153 +1,310 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Navbar from "../navbar/navbar";
 import Dal from "../../../public/assets/dal.png";
+import Map from "../../../public/assets/map.png";
+import { IoLocationOutline } from "react-icons/io5";
+import { FiMinus, FiPlus } from "react-icons/fi";
+import { TbCancel } from "react-icons/tb";
 
 const TourPage = () => {
+  const latitude = 37.7749; // Replace with actual latitude
+  const longitude = -122.4194;
   return (
-    <>
-      <Navbar />
-      <div className="flex">
-        <div className=" min-h-screen">
-          <div className="max-w-6xl mx-auto p-4">
-            <h1 className="text-3xl font-bold mb-2">
-              Vintage Double Decker Bus Tour & Dal lake Cruise
-            </h1>
-            <div className="flex items-center mb-4">
-              <i className="fas fa-map-marker-alt text-gray-500 mr-2"></i>
-              <span className="text-gray-500">Srinagar</span>
-              <span className="ml-4 text-yellow-500">
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star-half-alt"></i> (348 reviews)
-              </span>
-            </div>
-            <div className="flex flex-col lg:flex-row">
-              <div className="lg:w-2/3">
-                <Image src={Dal} alt="dal" />
-                <div className="flex space-x-2 mt-4">
-                  {[...Array(5)].map((_, idx) => (
-                    <img
-                      key={idx}
-                      src={`https://placehold.co/100x100`}
-                      alt={`Thumbnail ${idx + 1}`}
-                      className="w-20 h-20 rounded-lg"
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
+    <div className="flex py-5">
+      <div className="min-h-screen">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-4xl font-medium mb-2">
+            Vintage Double Decker Bus Tour & <br /> Dal lake Cruise
+          </h1>
+          <div className="flex items-center mb-4 gap-2">
+            <i className="fas fa-map-marker-alt text-gray-500 "></i>
+            <span className="flex items-center gap-2 text-[#778088]">
+              <IoLocationOutline />
+              Srinagar
+            </span>
+            <div className=" h-3 border-l-2 border-gray-400"></div>
 
-            {/* Details Section */}
-            <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {[
-                  {
-                    icon: "fa-check-circle",
-                    title: "Free cancellation",
-                    description:
-                      "Cancel up to 24 hours in advance to receive a full refund",
-                  },
-                  {
-                    icon: "fa-shield-alt",
-                    title: "Health precautions",
-                    description:
-                      "Special health and safety measures apply. Learn more",
-                  },
-                  {
-                    icon: "fa-mobile-alt",
-                    title: "Mobile ticketing",
-                    description: "Use your phone or print your voucher",
-                  },
-                  {
-                    icon: "fa-clock",
-                    title: "Duration 3.5 hours",
-                    description: "Check availability to see starting times",
-                  },
-                  {
-                    icon: "fa-bolt",
-                    title: "Instant confirmation",
-                    description: "Don't wait for the confirmation!",
-                  },
-                  {
-                    icon: "fa-language",
-                    title: "Live tour guide in English",
-                    description: "English",
-                  },
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-start">
-                    <i
-                      className={`fas ${item.icon} text-green-500 text-xl mr-2`}
-                    ></i>
-                    <div>
-                      <h3 className="font-bold">{item.title}</h3>
-                      <p>{item.description}</p>
-                    </div>
-                  </div>
+            <span className=" text--[#778088]">
+              <span className=" text-[#FFA432] mx-2">★★★★★</span>
+              <i className="fas fa-star-half-alt"></i> (348 reviews)
+            </span>
+          </div>
+          <div className="flex flex-col lg:flex-row">
+            <div className="">
+              <Image src={Dal} alt="dal" width={770} height={460} />
+              <div className="flex space-x-3 mt-4">
+                {[...Array(5)].map((_, idx) => (
+                  <Image
+                    key={idx}
+                    src={Dal}
+                    alt={`Thumbnail ${idx + 1}`}
+                    className="w-full h-full "
+                    width={120}
+                    height={100}
+                  />
                 ))}
               </div>
             </div>
-
-            {/* Description Section */}
-            <div className="mt-6">
-              <h2 className="text-2xl font-bold mb-4">Description</h2>
-              <p>
-                The Vintage Double Decker Bus Tour & Dal lake Cruise 5D4N is a
-                5-day, 4-night tour package that provides travelers with a
-                fun-filled and memorable experience in the stunning region of
-                Kashmir, India. This tour package typically includes a mix of
-                scenic sightseeing, cultural activities, and outdoor adventure.
-                The itinerary is designed to give travelers a chance to explore
-                the local culture, natural beauty, and vibrant history of
-                Kashmir. Accommodation and meals are typically included in the
-                package, along with transportation and guide services. This tour
-                is suitable for those seeking a unique and enjoyable holiday
-                experience in one of India’s most picturesque destinations.
-                Activities may include visits to famous landmarks, boat rides on
-                the stunning Dal Lake, trekking in the nearby hills, and much
-                more.
-              </p>
-            </div>
           </div>
-        </div>
-        <div className="lg:w-1/3 lg:pl-8 mt-[100px] ">
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-bold mb-4">Booking</h2>
-            <div className="mb-4">
-              <label className="block text-gray-700 mb-2">Select Date</label>
-              <input
-                type="date"
-                className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-            {["Adults (18 yrs onwards)", "Children (5 yrs - 17 yrs)"].map(
-              (label, idx) => (
-                <div key={idx} className="mb-4">
-                  <label className="block text-gray-700 mb-2">{label}</label>
-                  <div className="flex items-center">
-                    <button className="px-3 py-1 border rounded-l-lg">-</button>
-                    <input
-                      type="text"
-                      defaultValue="1"
-                      className="w-12 text-center border-t border-b"
-                    />
-                    <button className="px-3 py-1 border rounded-r-lg">+</button>
+          <div className="bg-[#F8FAFC] p-6 rounded-[3px] border border-[#16527D14] shadow-md mt-6 mr-[63px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                {
+                  icon: "fa-check-circle",
+                  title: " Free cancellation",
+                  // title: {`${<TbCancel />}Free cancellation`},
+                  description:
+                    "Cancel up to 24 hours in advance to  receive a full refund",
+                },
+                {
+                  icon: "fa-shield-alt",
+                  title: "Health precautions",
+                  description:
+                    "Special health and safety measures apply. Learn more",
+                },
+                {
+                  icon: "fa-mobile-alt",
+                  title: "Mobile ticketing",
+                  description: "Use your phone or print your voucher",
+                },
+                {
+                  icon: "fa-clock",
+                  title: "Duration 3.5 hours",
+                  description: "Check availability to see starting times",
+                },
+                {
+                  icon: "fa-bolt",
+                  title: "Instant confirmation",
+                  description: "Don't wait for the confirmation!",
+                },
+                {
+                  icon: "fa-language",
+                  title: "Live tour guide in English",
+                  description: "English",
+                },
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-start">
+                  <i
+                    className={`fas ${item.icon} text-green-500 text-xl mr-2`}
+                  ></i>
+                  <div>
+                    <h3 className="font-bold">
+                      {/* {idx === 0 && (
+                        <TbCancel className="text-red-500 text-lg mr-2" />
+                      )} */}
+                      {item.title}
+                    </h3>
+                    <p className="px-5">{item.description}</p>
                   </div>
                 </div>
-              )
-            )}
-            <div className="text-2xl font-bold text-green-500 mb-4">
-              444,78.90
+              ))}
             </div>
-            <button className="w-full bg-green-500 text-white py-2 rounded-lg">
-              Confirm Booking
-            </button>
+          </div>
+          {/* Description Section */}
+          <div className="mt-8">
+            <h2 className="text-2xl font-bold mb-4">Description</h2>
+            <p>
+              The Vintage Double Decker Bus Tour & Dal lake Cruise 5D4N is a
+              5-day, 4-night tour package that provides travelers with a
+              fun-filled and memorable experience in the stunning region of
+              Kashmir, India. This tour package typically includes a mix of
+              scenic sightseeing, cultural activities, and outdoor adventure.
+              The itinerary is designed to give travelers a chance to explore
+              the local culture, natural beauty, and vibrant history of Kashmir.
+              Accommodation and meals are typically included in the package,
+              along with transportation and guide services. This tour is
+              suitable for those seeking a unique and enjoyable holiday
+              experience in one of India’s most picturesque destinations.
+              Activities may include visits to famous landmarks, boat rides on
+              the stunning Dal Lake, trekking in the nearby hills, and much
+              more.
+            </p>
+          </div>
+          <hr className="border-gray-300 my-4" />
+
+          {/* Activity, Includes, Safety, Details, and Map Sections */}
+          <div className="description-section">
+            <div className=" text-black">
+              <div className="max-w-4xl mt-8 mx-auto ">
+                <section className="mb-8">
+                  <h2 className="text-2xl font-bold mb-4">Activity</h2>
+                  <div>
+                    <h3 className="font-semibold">What You Will Do</h3>
+                    <ul className="list-disc list-inside">
+                      <li>
+                        <strong>Day 1</strong> Discover London on board a
+                        classic Routemaster vintage double decker bus
+                      </li>
+                      <li>
+                        <strong>Day 2</strong> Cruise down the River Thames
+                      </li>
+                      <li>
+                        <strong>Day 3</strong> See the Changing of the Guard
+                      </li>
+                      <li>
+                        <strong>Day 4</strong> Go to Westminster Abbey
+                      </li>
+                      <li>
+                        <strong>Day 5</strong> Listen to the chimes of Big Ben
+                        and see the Houses of Parliament
+                      </li>
+                    </ul>
+                  </div>
+                </section>
+                <hr className="border-[#CEDADF] my-8" />
+
+                <section className="mb-8">
+                  <h2 className="text-2xl font-bold mb-4">
+                    What Is Included / Not Included
+                  </h2>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <h3 className="font-semibold">Includes</h3>
+                      <ul className="list-disc list-inside">
+                        <li>Double-decker Routemaster tour</li>
+                        <li>Short trip along the River Thames</li>
+                        <li>Changing of the Guard</li>
+                        <li>Gratuities</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">Not Includes</h3>
+                      <ul className="list-disc list-inside">
+                        <li>Double-decker Routemaster tour</li>
+                        <li>Short trip along the River Thames</li>
+                        <li>Changing of the Guard</li>
+                        <li>Gratuities</li>
+                      </ul>
+                    </div>
+                  </div>
+                </section>
+                <hr className="border-[#CEDADF] my-8" />
+
+                <section className="mb-8">
+                  <h2 className="text-2xl font-bold mb-4">Safety</h2>
+                  <div>
+                    <h3 className="font-semibold">Health precautions</h3>
+                    <ul className="list-disc list-inside">
+                      <li>All required protective equipment is provided</li>
+                      <li>
+                        All areas that customers touch are frequently cleaned
+                      </li>
+                      <li>You must keep social distance while in vehicles</li>
+                      <li>
+                        The number of visitors is limited to reduce crowds
+                      </li>
+                    </ul>
+                  </div>
+                </section>
+                <hr className="border-[#CEDADF] my-8" />
+
+                <section className="mb-8">
+                  <h2 className="text-2xl font-bold mb-4">Details</h2>
+                  <div className="grid grid-cols-3 gap-4 mb-4">
+                    <div>
+                      <h3 className="font-semibold">Language</h3>
+                      <ul className="list-disc list-inside">
+                        <li>English</li>
+                        <li>Urdu</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">Duration</h3>
+                      <ul className="list-disc list-inside">
+                        <li>2 hours</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">Number of people</h3>
+                      <ul className="list-disc list-inside">
+                        <li>5 people</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mt-8">
+                      Meeting point address
+                    </h3>
+                    <div className="flex gap-[6px] text-[18px] font-normal leading-[21.6px] mr-12 mt-4 ">
+                      {/* <span className="h">
+                        <div className="h-[8px] w-[8px] bg-[#495560] rounded-full mt-1"></div>
+                      </span> */}
+                      Meet your guide inside the west entrance of Altab Ali Park
+                      (Whitechapel Road). It's opposite the entrance to Aldgate
+                      East Tube Station and the Whitechapel Gallery. Look for a
+                      guide wearing SMT attire and holding a red SMT flag.
+                    </div>
+                    <div className="text-[#56C2C3] text-[18px] font-semibold mt-8">
+                      <a
+                        className=""
+                        href={`https://www.google.com/maps?q=${latitude},${longitude}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Open in Google Maps
+                      </a>
+                    </div>
+                  </div>
+                </section>
+
+                <div className="w-[740px]">
+                  <Image
+                    alt="Map showing the meeting point location"
+                    className="w-auto h-auto p-0 m-0"
+                    height={340}
+                    src={Map}
+                    width={740}
+                  />
+                </div>
+                <hr className="border-[#CEDADF]  my-12 " />
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </>
+      <div className="w-[470px] lg:pl-4 mt-[127px] mr-[100px]">
+        <div className="bg-[white] p-6 rounded-lg shadow-md">
+          <h2 className="text-[36px] font-medium text-[#1C2B38] border-b mb-4">
+            Booking
+          </h2>
+          <div className="mb-4">
+            <label className="block text-black mb-2">Select Date</label>
+            <input
+              type="date"
+              className="w-full p-2 border bg-[#D6D6D6] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#808080] cursor-pointer"
+            />
+          </div>
+          {["Adults (18 yrs onwards)", "Children (5 yrs - 17 yrs)"].map(
+            (label, idx) => (
+              <div key={idx} className="mb-4">
+                <label className="block text-black  mb-2">{label}</label>
+                <div className="flex items-center">
+                  <button className="px-3 py-2 border bg-[#D6D6D6] rounded-l-lg  ">
+                    <FiMinus />
+                  </button>
+                  <input
+                    type="text"
+                    defaultValue="1"
+                    className="w-12 text-center border-t border-b"
+                  />
+                  <button className="px-3 py-2 border bg-[#D6D6D6] rounded-r-lg">
+                    <FiPlus />
+                  </button>
+                </div>
+              </div>
+            )
+          )}
+          <div className="text-2xl font-bold text-[#56C2C3] mb-4">
+            444,78.90
+          </div>
+          <button className="w-full h-[50px] bg-signup-gradient text-white py-2 text-[18px] font-bold rounded-lg tracking-[0.04em]">
+            Confirm Booking
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 
