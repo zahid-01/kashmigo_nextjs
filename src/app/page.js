@@ -33,13 +33,12 @@ export default function Home() {
       url: `${BASE_URI}/tours/package`,
     }).then(
       (res) => {
-        console.log(res.data.data);
         setTours(res.data.data);
       },
       (err) => {}
     );
   }, []);
-  console.log("Home");
+
   return (
     <>
       <div className="">
@@ -67,7 +66,6 @@ export default function Home() {
                 <Image
                   alt="Traveler with suitcase"
                   className=" mx-auto w-auto h-auto"
-                  layout="intrinsic"
                   height={400}
                   src={Image1}
                   width={400}
@@ -217,7 +215,7 @@ export default function Home() {
             <div className="mt-[200px] mx-auto max-w-7xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4">
               {tours.length > 0 &&
                 tours.map((tour, index) => (
-                  <Link href="/city-tour" key={index} passHref>
+                  <Link href={`/tour/${tour.id}`} key={index} passHref>
                     <TourCards tour={tour} />
                   </Link>
                 ))}

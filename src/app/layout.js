@@ -8,6 +8,7 @@ const alegreya = Alegreya_Sans({
   subsets: ["latin"],
   weight: ["100", "300", "400", "500", "700"],
 });
+
 export const metadata = {
   title: "Kashmi-Go",
   description: "Enjoy your Vacation",
@@ -16,12 +17,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={alegreya.className}>
-        <main className="container w-100vw bg-[#FEFCFB] mx-auto ">
+      <body suppressHydrationWarning={true} className={alegreya.className}>
+        <main className="container bg-[#FEFCFB] mx-auto min-h-screen">
           <Prov>
-            <>
-              <Navbar /> {children}
-            </>
+            <Navbar />
+            {children}
           </Prov>
         </main>
         <Footer />
