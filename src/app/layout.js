@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
         <main className="container w-100vw bg-[#FEFCFB] mx-auto ">
           <Prov>
             <>
-              <Navbar /> {children}
+              <Navbar className="w-screen" /> {children}
             </>
           </Prov>
         </main>

@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
@@ -31,7 +30,7 @@ export default function Navbar() {
         <ul className="hidden md:flex space-x-6">
           <li>
             <a
-              href="#"
+              href="/tour-packages"
               className="text-[16px] font-bold leading-6 text-[#000000] hover:text-[#228B22]"
             >
               Kashmir Tour Packages
@@ -39,7 +38,7 @@ export default function Navbar() {
           </li>
           <li>
             <a
-              href="#"
+              href="/taxi-services"
               className="text-[16px] font-bold leading-6 text-[#000000] hover:text-[#228B22]"
             >
               Taxi Services
@@ -47,7 +46,7 @@ export default function Navbar() {
           </li>
           <li>
             <a
-              href="#"
+              href="/activities"
               className="text-[16px] font-bold leading-6 text-[#000000] hover:text-[#228B22]"
             >
               Activities
@@ -55,7 +54,7 @@ export default function Navbar() {
           </li>
           <li>
             <a
-              href="#"
+              href="/about"
               className="text-[16px] font-bold leading-6 text-[#000000] hover:text-[#228B22]"
             >
               About us
