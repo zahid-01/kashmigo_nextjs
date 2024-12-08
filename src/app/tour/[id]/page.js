@@ -1,23 +1,50 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Navbar from "../navbar/navbar";
-import Dal from "../../../public/assets/dal.png";
-import Map from "../../../public/assets/map.png";
+import Map from "../../../../public/assets/map.png";
 import { IoLocationOutline } from "react-icons/io5";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { TbCancel } from "react-icons/tb";
+import axios from "axios";
+import { BASE_URI } from "../../web/beConfig";
+import { useParams } from "next/navigation";
+import BookingForm from "@/app/components/BookingForm";
 
 const TourPage = () => {
+  const params = useParams();
+
+  const [tour, setTour] = useState(null);
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url: `${BASE_URI}/tours/single/${params.id}`,
+    }).then(
+      (res) => {
+        setTour(res.data.data);
+      },
+      (err) => {
+        console.log(res.data);
+      }
+    );
+  }, [params.id]);
+
   const latitude = 37.7749; // Replace with actual latitude
   const longitude = -122.4194;
+
+  if (!tour) {
+    return (
+      <>
+        <p>Loading</p>
+      </>
+    );
+  }
+
   return (
     <div className="flex py-5">
       <div className="min-h-screen">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-medium mb-2">
-            Vintage Double Decker Bus Tour & <br /> Dal lake Cruise
-          </h1>
+          <h1 className="text-4xl font-medium mb-2">{tour.packageName}</h1>
           <div className="flex items-center mb-4 gap-2">
             <i className="fas fa-map-marker-alt text-gray-500 "></i>
             <span className="flex items-center gap-2 text-[#778088]">
@@ -28,17 +55,22 @@ const TourPage = () => {
 
             <span className=" text--[#778088]">
               <span className=" text-[#FFA432] mx-2">★★★★★</span>
-              <i className="fas fa-star-half-alt"></i> (348 reviews)
+              <i className="fas fa-star-half-alt"></i> ({tour.numberOfReviews})
             </span>
           </div>
           <div className="flex flex-col lg:flex-row">
             <div className="">
-              <Image src={Dal} alt="dal" width={770} height={460} />
+              <Image
+                src={tour.pictures[0]}
+                alt="dal"
+                width={770}
+                height={460}
+              />
               <div className="flex space-x-3 mt-4">
-                {[...Array(5)].map((_, idx) => (
+                {tour.pictures.map((picture, idx) => (
                   <Image
                     key={idx}
-                    src={Dal}
+                    src={picture}
                     alt={`Thumbnail ${idx + 1}`}
                     className="w-full h-full "
                     width={120}
@@ -105,22 +137,7 @@ const TourPage = () => {
           {/* Description Section */}
           <div className="mt-8">
             <h2 className="text-2xl font-bold mb-4">Description</h2>
-            <p>
-              The Vintage Double Decker Bus Tour & Dal lake Cruise 5D4N is a
-              5-day, 4-night tour package that provides travelers with a
-              fun-filled and memorable experience in the stunning region of
-              Kashmir, India. This tour package typically includes a mix of
-              scenic sightseeing, cultural activities, and outdoor adventure.
-              The itinerary is designed to give travelers a chance to explore
-              the local culture, natural beauty, and vibrant history of Kashmir.
-              Accommodation and meals are typically included in the package,
-              along with transportation and guide services. This tour is
-              suitable for those seeking a unique and enjoyable holiday
-              experience in one of India’s most picturesque destinations.
-              Activities may include visits to famous landmarks, boat rides on
-              the stunning Dal Lake, trekking in the nearby hills, and much
-              more.
-            </p>
+            <p>{tour.description}</p>
           </div>
           <hr className="border-gray-300 my-4" />
 
@@ -133,23 +150,14 @@ const TourPage = () => {
                   <div>
                     <h3 className="font-semibold">What You Will Do</h3>
                     <ul className="list-disc list-inside">
-                      <li>
-                        <strong>Day 1</strong> Discover London on board a
-                        classic Routemaster vintage double decker bus
-                      </li>
-                      <li>
-                        <strong>Day 2</strong> Cruise down the River Thames
-                      </li>
-                      <li>
-                        <strong>Day 3</strong> See the Changing of the Guard
-                      </li>
-                      <li>
-                        <strong>Day 4</strong> Go to Westminster Abbey
-                      </li>
-                      <li>
-                        <strong>Day 5</strong> Listen to the chimes of Big Ben
-                        and see the Houses of Parliament
-                      </li>
+                      {tour?.itinerary?.map((itinerary, index) => {
+                        return (
+                          <li key={index}>
+                            <strong>{Object.keys(itinerary)[0]}</strong>
+                            {Object.values(itinerary)[0]}
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 </section>
@@ -163,19 +171,17 @@ const TourPage = () => {
                     <div>
                       <h3 className="font-semibold">Includes</h3>
                       <ul className="list-disc list-inside">
-                        <li>Double-decker Routemaster tour</li>
-                        <li>Short trip along the River Thames</li>
-                        <li>Changing of the Guard</li>
-                        <li>Gratuities</li>
+                        {tour.included.map((el, index) => (
+                          <li key={index}>{el}</li>
+                        ))}
                       </ul>
                     </div>
                     <div>
                       <h3 className="font-semibold">Not Includes</h3>
                       <ul className="list-disc list-inside">
-                        <li>Double-decker Routemaster tour</li>
-                        <li>Short trip along the River Thames</li>
-                        <li>Changing of the Guard</li>
-                        <li>Gratuities</li>
+                        {tour.excluded.map((el, index) => (
+                          <li key={index}>{el}</li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -213,7 +219,7 @@ const TourPage = () => {
                     <div>
                       <h3 className="font-semibold">Duration</h3>
                       <ul className="list-disc list-inside">
-                        <li>2 hours</li>
+                        <li>{tour.duration}</li>
                       </ul>
                     </div>
                     <div>
@@ -239,7 +245,7 @@ const TourPage = () => {
                     <div className="text-[#56C2C3] text-[18px] font-semibold mt-8">
                       <a
                         className=""
-                        href={`https://www.google.com/maps?q=${latitude},${longitude}`}
+                        href={`https://www.google.com/maps?q=${tour.tourLocation.latitude},${tour.tourLocation.longitude}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -264,46 +270,7 @@ const TourPage = () => {
           </div>
         </div>
       </div>
-      <div className="w-[470px] lg:pl-4 mt-[127px] mr-[100px]">
-        <div className="bg-[white] p-6 rounded-lg shadow-md">
-          <h2 className="text-[36px] font-medium text-[#1C2B38] border-b mb-4">
-            Booking
-          </h2>
-          <div className="mb-4">
-            <label className="block text-black mb-2">Select Date</label>
-            <input
-              type="date"
-              className="w-full p-2 border bg-[#D6D6D6] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#808080] cursor-pointer"
-            />
-          </div>
-          {["Adults (18 yrs onwards)", "Children (5 yrs - 17 yrs)"].map(
-            (label, idx) => (
-              <div key={idx} className="mb-4">
-                <label className="block text-black  mb-2">{label}</label>
-                <div className="flex items-center">
-                  <button className="px-3 py-2 border bg-[#D6D6D6] rounded-l-lg  ">
-                    <FiMinus />
-                  </button>
-                  <input
-                    type="text"
-                    defaultValue="1"
-                    className="w-12 text-center border-t border-b"
-                  />
-                  <button className="px-3 py-2 border bg-[#D6D6D6] rounded-r-lg">
-                    <FiPlus />
-                  </button>
-                </div>
-              </div>
-            )
-          )}
-          <div className="text-2xl font-bold text-[#56C2C3] mb-4">
-            444,78.90
-          </div>
-          <button className="w-full h-[50px] bg-signup-gradient text-white py-2 text-[18px] font-bold rounded-lg tracking-[0.04em]">
-            Confirm Booking
-          </button>
-        </div>
-      </div>
+      <BookingForm tour={tour} />
     </div>
   );
 };
