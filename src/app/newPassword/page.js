@@ -79,22 +79,8 @@ export default function ForgotPasswordPage() {
 
         {/* Branding Images */}
         <div className="flex justify-center gap-8 mt-8">
-          <Image
-            src={taj}
-            layout="intrinsic"
-            alt="Taj"
-            width={120}
-            height={100}
-            priority
-          />
-          <Image
-            src={peso}
-            layout="intrinsic"
-            alt="Peso"
-            width={120}
-            height={100}
-            priority
-          />
+          <Image src={taj} alt="Taj" width={120} height={100} priority />
+          <Image src={peso} alt="Peso" width={120} height={100} priority />
         </div>
       </div>
     </div>

@@ -2,15 +2,14 @@ import Image from "next/image";
 import Mountain from "../../../public/assets/mountains.png";
 
 const TourCards = ({ tour }) => {
-  console.log(tour);
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden">
       <div className="relative group">
         <Image
-          src={Mountain}
+          src={tour.pictures[0]}
           width={500}
           height={300}
-          alt="Alaska"
+          alt="Kashmir_travels"
           className="w-full h-40 object-cover transition-transform duration-1000 group-hover:scale-110"
           priority
         />
@@ -30,7 +29,9 @@ const TourCards = ({ tour }) => {
             </span>
           </div>
 
-          <span className="text-[#56C2C3] font-bold">from $35.00</span>
+          <span className="text-[#56C2C3] font-bold">
+            from &#8377; {tour.price}
+          </span>
         </div>
       </div>
     </div>
