@@ -10,6 +10,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { loginActions } from "../store/loginSlice";
 import { useRouter } from "next/navigation";
+axios.defaults.withCredentials = true;
 
 export default function LoginPage() {
   const router = useRouter();

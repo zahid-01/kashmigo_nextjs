@@ -4,13 +4,29 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { loginActions } from "../store/loginSlice";
+import axios from "axios";
+import { BASE_URI } from "../web/beConfig";
+
+axios.defaults.withCredentials = true;
 
 export default function Navbar() {
   const dispatch = useDispatch();
   const router = useRouter();
-  const user = useSelector((state) => state.user);
+  let user = useSelector((state) => state.user);
 
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    axios({
+      method: "POST",
+      url: `${BASE_URI}/auth/isLoggedIn`,
+    }).then(
+      (res) => {
+        console.log(res.data);
+      },
+      () => {}
+    );
+  }, []);
 
   const handleLogout = () => {
     dispatch(loginActions.logout());

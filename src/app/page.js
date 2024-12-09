@@ -24,6 +24,7 @@ import { useEffect, useState } from "react";
 import { BASE_URI } from "./web/beConfig";
 import TourCards from "./components/TourCards";
 import Link from "next/link";
+import Gallery from "./components/Gallery";
 
 export default function Home() {
   const [tours, setTours] = useState([]);
@@ -367,62 +368,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 ">
-            <Image
-              src={overlap1}
-              alt="A forest with tall trees and a path"
-              width={270}
-              height={320}
-              className="rounded-lg "
-            />
-            <Image
-              src={overlap1}
-              alt="A lake with boats and mountains in the background"
-              width={270}
-              height={320}
-              className="rounded-lg "
-            />
-            <Image
-              src={overlap1}
-              alt="Snow-covered mountains with clouds"
-              width={270}
-              height={320}
-              className="rounded-lg "
-            />
-            <Image
-              src={overlap1}
-              alt="A green field with hills and a cloudy sky"
-              width={270}
-              height={320}
-              className="rounded-lg "
-            />
-            <Image
-              src={overlap1}
-              alt="A river flowing through a forest"
-              width={270}
-              height={320}
-              className="rounded-lg "
-            />
-            <Image
-              src={overlap1}
-              alt="A red bridge in a forest"
-              width={270}
-              height={320}
-              className="rounded-lg "
-            />
-            <Image
-              src={overlap1}
-              alt="A sunset over a lake with trees"
-              width={270}
-              height={320}
-              className="rounded-lg "
-            />
-            <Image
-              src={overlap1}
-              alt="A lake with mountains in the background during sunset"
-              width={270}
-              height={320}
-              className="rounded-lg "
-            />
+            <Gallery />
           </div>
         </div>
       </div>
