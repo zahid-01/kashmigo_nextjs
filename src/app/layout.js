@@ -20,11 +20,10 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning={true} className={alegreya.className}>
         <main className="container bg-[#FEFCFB] mx-auto min-h-screen">
           <Prov>
-           <>
-
-            <Navbar />
-            {children}
-</>
+            <>
+              <Navbar />
+              {children}
+            </>
           </Prov>
         </main>
         <Footer />
