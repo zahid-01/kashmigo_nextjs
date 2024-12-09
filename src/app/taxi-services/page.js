@@ -40,7 +40,11 @@ const TaxiServices = () => {
             your comfort and safety. For instant taxi bookings or self-drive car
             options in Kashmir, KashmiGo is <br /> your trusted choice.
           </p>
-          <Link href="">
+          <Link
+            href="https://wa.me/9622729348"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <button className="bg-signup-gradient rounded-lg text-white text-[18px] font-bold mt-5 px-3 py-3 ">
               Reserve a Ride Now!
             </button>
@@ -73,6 +77,43 @@ const TaxiServices = () => {
         <Image src={Taxis} alt="About Us" height={517} className="w-full" />
       </div>
       <Table />
+      <div className="mx-12">
+        <p className="text-[#000000] text-[18px] font-normal leading-[21.6px] my-12 ">
+          If you’re looking to travel off the beaten path and visit destinations
+          like Baba Reshi Shrine, Shrunz Fall, and Drung Waterfall from Gulmarg,
+          you’ll need to book a local taxi for transportation. To find out the
+          taxi fares for these off-route journeys, as well as for Gulmarg Cable
+          Car bookings, Gulmarg Cable Car fares, Gulmarg Skiing rates, and
+          Gulmarg sightseeing rates, simply call +91 9999999999 for an instant
+          quote.
+        </p>
+        <h2 className="text-[36px] font-medium leading-[43.2px] text-center">
+          Self Drive Car in <span className="text-[#228B22]">Kashmir</span>
+        </h2>
+        <p className="text-[#000000] text-[18px] font-normal leading-[21.6px]  my-12 ">
+          Absolutely! Now, for your Kashmir trip, you can rent a self-drive car
+          without a driver for a truly private and flexible experience. In
+          addition to offering vehicles for your leisure and privacy, we also
+          provide driverless car rentals, ensuring complete independence during
+          your journey. Our cars are thoroughly cleaned and sanitized after
+          every rental, prioritizing your safety and comfort for a worry-free
+          travel experience in Kashmir.
+        </p>
+      </div>
+      <div className="mx-12 my-12">
+        <h2 className="text-[36px] font-medium leading-[43.2px] text-center mb-8">
+          Pre Book Your{" "}
+          <span className="text-[#228B22]">
+            Kashmir Tour Package , Cab Service , Self Drive
+          </span>
+        </h2>
+        <h2 className="text-[36px] font-medium leading-[43.2px]">
+          With <span className="text-[#56C2C3]">KashmiGo,</span> reservations
+          for taxi services in Kashmir can be made in advance. You can simply
+          make a reservation for your Kashmir cab by calling our reservation
+          team at <span className="text-[#56C2C3]">+919999999999</span> 
+        </h2>
+      </div>
     </div>
   );
 };
