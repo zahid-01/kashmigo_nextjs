@@ -270,7 +270,10 @@ const TourPage = () => {
           </div>
         </div>
       </div>
-      <BookingForm tour={tour} />
+      {/* mt-[127px] mr-[100px] */}
+      <div className="mt-[127px] mr-[100px]">
+        <BookingForm tour={tour} />
+      </div>
     </div>
   );
 };

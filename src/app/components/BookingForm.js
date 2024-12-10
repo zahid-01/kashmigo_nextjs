@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import { BASE_URI } from "../web/beConfig";
 
 const BookingForm = ({ tour }) => {
   const router = useRouter();
@@ -22,18 +24,42 @@ const BookingForm = ({ tour }) => {
     }
   };
 
-  const handleBooking = () => {
+  const handleBooking = async () => {
     if (!startDate || !numberOfPeople) {
       return setErr("Provide all the required details");
     }
 
-    console.log(startDate);
-    console.log(numberOfPeople);
-    router.push("/");
+    const payload = {
+      tourId: tour.id,
+      date: startDate,
+      numberOfPeople,
+    };
+    router.push(
+      `/checkout?date=${startDate}&people=${numberOfPeople}&id=${tour.id}`
+    );
+    // router.push({
+    //   pathname: "/checkout",
+    //   // query: {
+    //   //   tourId: tour.id,
+    //   //   date: startDate,
+    //   //   numberOfPeople,
+    //   // },
+    // });
   };
 
+  // const handleBooking = () => {
+  //   if (!startDate || !numberOfPeople) {
+  //     return setErr("Provide all the required details");
+  //   }
+
+  //   console.log(startDate);
+  //   console.log(numberOfPeople);
+  //   router.push("/checkout");
+  // };
+  const totalPrice = numberOfPeople * tour.price;
+
   return (
-    <div className="w-[470px] lg:pl-4 mt-[127px] mr-[100px]">
+    <div className="w-[470px] lg:pl-4 ">
       <div className="bg-[white] p-6 rounded-lg shadow-md">
         <h2 className="text-[36px] font-medium text-[#1C2B38] border-b mb-4">
           Booking
@@ -50,41 +76,40 @@ const BookingForm = ({ tour }) => {
             }}
           />
         </div>
-        {["Adults (3 yrs onwards)", "Children (0 yrs - 3 yrs)"].map(
-          (label, idx) => (
-            <div key={idx} className="mb-4">
-              <label className="block text-black  mb-2">{label}</label>
-              <div className="flex items-center">
-                <button
-                  className="px-3 py-2 border bg-[#D6D6D6] rounded-r-lg"
-                  onClick={() => {
-                    handleChangeNoOfPeople("-");
-                  }}
-                >
-                  <FiMinus />
-                </button>
-                <input
-                  type="number"
-                  className="w-12 text-center border-t border-b"
-                  value={numberOfPeople}
-                  onChange={(e) => {
-                    setNumberOfPeople(e.target.value);
-                  }}
-                />
-                <button
-                  className="px-3 py-2 border bg-[#D6D6D6] rounded-r-lg"
-                  onClick={() => {
-                    handleChangeNoOfPeople("+");
-                  }}
-                >
-                  <FiPlus />
-                </button>
-              </div>
+        {["Adults (3 yrs onwards)"].map((label, idx) => (
+          <div key={idx} className="mb-4">
+            <label className="block text-black  mb-2">{label}</label>
+            <div className="flex items-center">
+              <button
+                className="px-3 py-2 border bg-[#D6D6D6] rounded-r-lg"
+                onClick={() => {
+                  handleChangeNoOfPeople("-");
+                }}
+              >
+                <FiMinus />
+              </button>
+              <input
+                type="number"
+                className="w-12 text-center border-t border-b appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                value={numberOfPeople}
+                onChange={(e) => {
+                  setNumberOfPeople(e.target.value);
+                }}
+              />
+              <button
+                className="px-3 py-2 border bg-[#D6D6D6] rounded-r-lg"
+                onClick={() => {
+                  handleChangeNoOfPeople("+");
+                }}
+              >
+                <FiPlus />
+              </button>
             </div>
-          )
-        )}
+          </div>
+        ))}
         <div className="text-2xl font-bold text-[#56C2C3] mb-4">
-          &#8377; {tour.price}
+          {/* &#8377; {tour.price} */}
+          Total: &#8377; {totalPrice}
         </div>
         <button
           onClick={handleBooking}

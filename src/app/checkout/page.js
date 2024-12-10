@@ -1,7 +1,64 @@
 "use client";
+import axios from "axios";
 import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { BASE_URI } from "../web/beConfig";
 
 const CheckoutPage = () => {
+  const searchParams = useSearchParams();
+  const date = searchParams.get("date");
+  const people = searchParams.get("people");
+  const id = searchParams.get("id");
+  const [error] = useState("");
+  const [fullName, setFullName] = useState();
+  const [email, setEmail] = useState();
+  const [trxId, setTrxId] = useState();
+  const [whatsAppNo, setWhatsAppNo] = useState();
+
+  const fetchActivityData = async () => {
+    axios({
+      method: "GET",
+      url: `${BASE_URI}/activities/single/${id}`,
+    }).then(
+      (res) => {
+        console.log(res.data.data);
+        // setActivity(res.data.data);
+        setLoading(false);
+      },
+      (err) => {
+        console.error("Error fetching activity data:", error);
+        setLoading(false);
+      }
+    );
+  };
+
+  useEffect(() => {
+    fetchActivityData();
+  }, []);
+
+  const handleCheckout = (e) => {
+    e.preventDefault();
+
+    const JWT = localStorage.getItem("JWT");
+    axios({
+      method: "POST",
+      url: `${BASE_URI}/booking`,
+      data: {
+        startDate: date,
+        numberOfPeople: people,
+        travelPackageId: id,
+        email: email,
+        fullname: fullName,
+        whatsAppNo,
+        transactionId: trxId,
+      },
+      headers: {
+        Authorization: `Bearer ${JWT}`,
+      },
+    });
+  };
+
   return (
     <div className="bg-[#FEFCFB] min-h-screen py-10">
       <div className="max-w-7xl mx-auto px-4">
@@ -23,6 +80,10 @@ const CheckoutPage = () => {
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter Full Name"
                   required
+                  value={fullName}
+                  onChange={(e) => {
+                    setFullName(e.target.value);
+                  }}
                 />
               </div>
               <div className="mb-4">
@@ -38,6 +99,10 @@ const CheckoutPage = () => {
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter WhatsApp Number"
                   required
+                  value={whatsAppNo}
+                  onChange={(e) => {
+                    setWhatsAppNo(e.target.value);
+                  }}
                 />
               </div>
               <div className="mb-4">
@@ -53,6 +118,10 @@ const CheckoutPage = () => {
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter Email"
                   required
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 />
               </div>
               <div className="mb-4">
@@ -68,6 +137,10 @@ const CheckoutPage = () => {
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter Transaction ID"
                   required
+                  value={trxId}
+                  onChange={(e) => {
+                    setTrxId(e.target.value);
+                  }}
                 />
               </div>
               <h2 className="text-3xl font-semibold mt-6">Deposit Amount</h2>
@@ -124,6 +197,7 @@ const CheckoutPage = () => {
               <button
                 type="submit"
                 className="text-xl mt-6 w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600"
+                onClick={handleCheckout}
               >
                 Confirm Booking
               </button>
@@ -139,19 +213,18 @@ const CheckoutPage = () => {
               </p>
               <div className="text-xl mt-2">
                 <p className="flex justify-between">
-                  Departure Date:{" "}
-                  <span className="font-semibold">11/11/2024</span>
+                  Departure Date: <span className="font-semibold">{date}</span>
                 </p>
                 <p className="flex justify-between">
                   Duration:{" "}
                   <span className="font-semibold">6 days & 5 nights</span>
                 </p>
                 <p className="flex justify-between">
-                  Adults: <span className="font-semibold">3</span>
+                  Adults: <span className="font-semibold">{people}</span>
                 </p>
-                <p className="flex justify-between">
+                {/* <p className="flex justify-between">
                   Children: <span className="font-semibold">3</span>
-                </p>
+                </p> */}
                 <p className="flex justify-between">
                   Deposit: <span className="font-semibold">30%</span>
                 </p>
