@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import AllTours from "../../../public/assets/Tour-Packages.png";
-import rec from "../../../public/assets/rectangle.png";
+import rec from "../../../public/assets/Rectangle.png";
 import { IoIosClock } from "react-icons/io";
 import { PiCarProfileFill } from "react-icons/pi";
 import { MdPeopleAlt } from "react-icons/md";

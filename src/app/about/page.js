@@ -4,7 +4,7 @@ import About from "../../../public/assets/about.png";
 import Shikara from "../../../public/assets/shikara.png";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import TourGuide from "../../../public/assets/tour-guide.png";
-import Customization from "../../../public/assets/Customization.png";
+import Customization from "../../../public/assets/customization.png";
 import ContactForm from "../components/ContactForm";
 
 const AboutPage = () => {

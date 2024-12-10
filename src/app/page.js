@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Mountain from "../../public/assets/mountains.png";
-import Image1 from "../../public/assets/image.png";
+import Image1 from "../../public/assets/Image.png";
 import Nature from "../../public/assets/nature.png";
 import Local from "../../public/assets/local.png";
 import Full from "../../public/assets/full.png";

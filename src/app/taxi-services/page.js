@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import TexiServices from "../../../public/assets/text-services.png";
-import Frame from "../../../public/assets/frame.png";
+import Frame from "../../../public/assets/Frame.png";
 import Taxis from "../../../public/assets/taxis.png";
 import Table from "../components/table";
 
