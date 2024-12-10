@@ -12,25 +12,30 @@ axios.defaults.withCredentials = true;
 export default function Navbar() {
   const dispatch = useDispatch();
   const router = useRouter();
-  let user = useSelector((state) => state.user);
-
+  let { user } = useSelector((state) => state.login);
+  console.log({ user });
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
+    const JWT = localStorage.getItem("JWT");
     axios({
       method: "POST",
       url: `${BASE_URI}/auth/isLoggedIn`,
+      headers: {
+        Authorization: `Bearer ${JWT}`,
+      },
     }).then(
       (res) => {
-        console.log(res.data);
+        dispatch(loginActions.setUser(res.data.data.user));
       },
       () => {}
     );
   }, []);
 
   const handleLogout = () => {
+    localStorage.removeItem("JWT");
     dispatch(loginActions.logout());
-    router.push("/login");
+    router.push("/");
   };
 
   return (
@@ -78,9 +83,29 @@ export default function Navbar() {
           </li>
         </ul>
 
-        <div className="hidden md:flex space-x-4">
+        <div className="hidden md:flex space-x-4 md:items-center">
           {user ? (
             <>
+              {user && user.role === "admin" && (
+                <ul>
+                  <Link
+                    href="/bookings"
+                    className="text-[16px] font-bold leading-6 text-[#000000] hover:text-[#228B22]"
+                  >
+                    Bookings
+                  </Link>
+                </ul>
+              )}
+              {user && user.role === "user" && (
+                <ul>
+                  <Link
+                    href="/My bookings"
+                    className="text-[16px] font-bold leading-6 text-[#000000] hover:text-[#228B22]"
+                  >
+                    My Bookings
+                  </Link>
+                </ul>
+              )}
               <span className="px-4 py-2 text-[#228B22] font-semibold">
                 {user.fullName}
               </span>
@@ -134,7 +159,7 @@ export default function Navbar() {
           <ul className="space-y-4 px-4 py-2">
             <li>
               <a
-                href="#"
+                href="/tour-packages"
                 className="block text-[16px] font-bold leading-6 text-[#000000] hover:text-[#228B22]"
               >
                 Kashmir Tour Packages
@@ -142,7 +167,7 @@ export default function Navbar() {
             </li>
             <li>
               <a
-                href="#"
+                href="/taxi-services"
                 className="block text-[16px] font-bold leading-6 text-[#000000] hover:text-[#228B22]"
               >
                 Taxi Services
@@ -150,7 +175,7 @@ export default function Navbar() {
             </li>
             <li>
               <a
-                href="#"
+                href="/activities"
                 className="block text-[16px] font-bold leading-6 text-[#000000] hover:text-[#228B22]"
               >
                 Activities
@@ -158,15 +183,25 @@ export default function Navbar() {
             </li>
             <li>
               <a
-                href="#"
+                href="/about"
                 className="block text-[16px] font-bold leading-6 text-[#000000] hover:text-[#228B22]"
               >
                 About us
               </a>
             </li>
-            {user && user.fullName ? (
+            {user && user.role === "Admin" && (
+              <li>
+                <Link
+                  href="/bookings"
+                  className="block text-[16px] font-bold leading-6 text-[#000000] hover:text-[#228B22]"
+                >
+                  Bookings
+                </Link>
+              </li>
+            )}
+            {user ? (
               <>
-                <li className="text-[#228B22] font-semibold">
+                <li className="text-[#000000] font-semibold">
                   {user.fullName}
                 </li>
                 <li>
