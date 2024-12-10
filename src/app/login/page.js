@@ -10,6 +10,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { loginActions } from "../store/loginSlice";
 import { useRouter } from "next/navigation";
+axios.defaults.withCredentials = true;
 
 export default function LoginPage() {
   const router = useRouter();
@@ -24,17 +25,24 @@ export default function LoginPage() {
     setLoading(true);
     setError("");
 
-    try {
-      const response = await axios.post(`${BASE_URI}/auth/login`, {
+    axios({
+      method: "POST",
+      url: `${BASE_URI}/auth/login`,
+      data: {
         email,
         password,
-      });
-      dispatch(loginActions.setUser(response.data.data));
-      router.push("/"); // Redirect to home after successful login
-    } catch (err) {
-      setError("Invalid credentials or server error.");
-      setLoading(false);
-    }
+      },
+    }).then(
+      (res) => {
+        localStorage.setItem("JWT", res.data.data.user.token);
+        dispatch(loginActions.setUser(res.data.data.user));
+        router.push("/");
+      },
+      () => {
+        setError("Invalid credentials or server error.");
+        setLoading(false);
+      }
+    );
   };
 
   return (

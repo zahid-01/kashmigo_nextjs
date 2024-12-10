@@ -41,7 +41,7 @@ const TourPage = () => {
   }
 
   return (
-    <div className="flex py-5">
+    <div className="flex py-5 md:flex-row flex-col">
       <div className="min-h-screen">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-4xl font-medium mb-2">{tour.packageName}</h1>
@@ -148,12 +148,14 @@ const TourPage = () => {
                 <section className="mb-8">
                   <h2 className="text-2xl font-bold mb-4">Activity</h2>
                   <div>
-                    <h3 className="font-semibold">What You Will Do</h3>
-                    <ul className="list-disc list-inside">
+                    <h3 className="font-semibold text-xl">What You Will Do</h3>
+                    <ul className="list-disc list-inside text-lg">
                       {tour?.itinerary?.map((itinerary, index) => {
                         return (
                           <li key={index}>
-                            <strong>{Object.keys(itinerary)[0]}</strong>
+                            <strong className="mr-4">
+                              {Object.keys(itinerary)[0]}
+                            </strong>
                             {Object.values(itinerary)[0]}
                           </li>
                         );
