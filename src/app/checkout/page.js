@@ -2,10 +2,10 @@
 import axios from "axios";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, Suspense, useState } from "react";
 import { BASE_URI } from "../web/beConfig";
 
-const CheckoutPage = () => {
+const CheckoutContent = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const date = searchParams.get("date");
@@ -255,5 +255,9 @@ const CheckoutPage = () => {
     </div>
   );
 };
-
+const CheckoutPage = () => (
+  <Suspense fallback={<div>Loading checkout...</div>}>
+    <CheckoutContent />
+  </Suspense>
+);
 export default CheckoutPage;
