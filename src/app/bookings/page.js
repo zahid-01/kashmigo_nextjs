@@ -13,6 +13,17 @@ export default function Bookings() {
   const [modalOpen, setModalOpen] = useState(false);
   const [amountPaid, setAmountPaid] = useState("");
 
+  const formatDate = (dateString) => {
+    try {
+      const options = { year: "numeric", month: "numeric", day: "numeric" };
+      return new Intl.DateTimeFormat("en-GB", options).format(
+        new Date(dateString)
+      );
+    } catch (err) {
+      return "Invalid Date";
+    }
+  };
+
   useEffect(() => {
     const fetchBookings = async () => {
       try {
@@ -23,7 +34,6 @@ export default function Bookings() {
           },
         });
         setBookings(response.data.data);
-        console.log(response.data.data);
       } catch (err) {
         setError("Failed to load bookings. Please try again later.");
       } finally {
@@ -131,7 +141,9 @@ export default function Bookings() {
                   <td className="px-4 py-2">
                     {booking.user?.fullName || "N/A"}
                   </td>
-                  <td className="px-4 py-2">{booking.bookingDate}</td>
+                  <td className="px-4 py-2">
+                    {formatDate(booking.bookingDate)}
+                  </td>
                   <td className="px-4 py-2">
                     {booking.travelPackage?.packageName || "N/A"}
                   </td>

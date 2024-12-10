@@ -99,7 +99,7 @@ export default function Navbar() {
               {user && user.role === "user" && (
                 <ul>
                   <Link
-                    href="/My bookings"
+                    href="/myBookings"
                     className="text-[16px] font-bold leading-6 text-[#000000] hover:text-[#228B22]"
                   >
                     My Bookings
