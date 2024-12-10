@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { BASE_URI } from "../web/beConfig";
 
 const CheckoutPage = () => {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const date = searchParams.get("date");
   const people = searchParams.get("people");
@@ -16,7 +17,7 @@ const CheckoutPage = () => {
   const [trxId, setTrxId] = useState();
   const [whatsAppNo, setWhatsAppNo] = useState();
 
-  const fetchActivityData = async () => {
+  useEffect(() => {
     axios({
       method: "GET",
       url: `${BASE_URI}/activities/single/${id}`,
@@ -24,18 +25,14 @@ const CheckoutPage = () => {
       (res) => {
         console.log(res.data.data);
         // setActivity(res.data.data);
-        setLoading(false);
+        // setLoading(false);
       },
       (err) => {
         console.error("Error fetching activity data:", error);
-        setLoading(false);
+        // setLoading(false);
       }
     );
-  };
-
-  useEffect(() => {
-    fetchActivityData();
-  }, []);
+  }, [error, id]);
 
   const handleCheckout = (e) => {
     e.preventDefault();
@@ -56,6 +53,8 @@ const CheckoutPage = () => {
       headers: {
         Authorization: `Bearer ${JWT}`,
       },
+    }).then(() => {
+      router.push("/success");
     });
   };
 
@@ -146,7 +145,7 @@ const CheckoutPage = () => {
               <h2 className="text-3xl font-semibold mt-6">Deposit Amount</h2>
               <div className="my-4 flex justify-center">
                 <Image
-                  src="/assets/qr-code.jpg" // Replace with your QR code image path
+                  src="https://kashmigo-tours.s3.ap-south-1.amazonaws.com/kmigoqr.jpeg" // Replace with your QR code image path
                   alt="QR Code"
                   width={160}
                   height={160}
@@ -157,21 +156,20 @@ const CheckoutPage = () => {
                 <h3 className="font-bold">Bank Details</h3>
                 <p>
                   Account Number:{" "}
-                  <span className="font-semibold">0448040100002142</span>
+                  <span className="font-semibold">0135041000002227</span>
                 </p>
                 <p>
                   Bank Name: <span className="font-semibold">JK Bank</span>
                 </p>
                 <p>
                   Branch Name:{" "}
-                  <span className="font-semibold">Fruit Mandi Sopore</span>
+                  <span className="font-semibold">Jk Bank Qasba Hyhama</span>
                 </p>
                 <p>
-                  IFSC: <span className="font-semibold">JAKA0APPLET</span>
+                  IFSC: <span className="font-semibold">JAKA0HYHAMA</span>
                 </p>
                 <p>
-                  UPI:{" "}
-                  <span className="font-semibold">Basitbashirbhat@axisb</span>
+                  UPI: <span className="font-semibold">6006955146@axl</span>
                 </p>
               </div>
               <div className="mt-6">
@@ -235,10 +233,7 @@ const CheckoutPage = () => {
                 <p>Adult Price:</p>
                 <p>₹21,000</p>
               </div>
-              <div className="flex justify-between text-xl font-medium">
-                <p>Child Price:</p>
-                <p>₹11,000</p>
-              </div>
+
               <div className="flex justify-between text-xl font-medium">
                 <p>Sub Total:</p>
                 <p>₹96,000</p>
