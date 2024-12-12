@@ -99,7 +99,7 @@ function Activity() {
                       ? renderStars(activity.averageRating)
                       : "No Ratings"}
                     <span className="text-[#7BBCB0] font-bold mr-7">
-                      ${activity.price}
+                      &#8377; {activity.price}
                     </span>
                   </div>
                   <div className="flex items-center justify-between">

@@ -9,6 +9,7 @@ import Americanexpress from "../../../public/assets/americanexpress.png";
 import Gpay from "../../../public/assets/Gpay.png";
 import ApplePay from "../../../public/assets/applePay.png";
 import Maestro from "../../../public/assets/maestro.png";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -25,15 +26,19 @@ const Footer = () => {
             priority
           />
           <p className="mt-1">
-            Travel helps companies <br /> manage payments easily.
+            Your Journey, Our Priority <br /> Book, Explore, Discover!
           </p>
         </div>
         <div className="flex flex-col md:flex-row md:space-x-16 text-black">
           <div className="mb-6 md:mb-0">
             <h2 className="font-bold">Company</h2>
             <ul className="mt-2 space-y-2">
-              <li>About Us</li>
-              <li>Blog</li>
+              <li>
+                <Link href="/about">About us</Link>
+              </li>
+              <li>
+                <Link href="/blog">Blogs</Link>
+              </li>
               <li>Press Room</li>
               <li>Careers</li>
             </ul>
@@ -42,9 +47,15 @@ const Footer = () => {
             <h2 className="font-bold">Help</h2>
             <ul className="mt-2 space-y-2">
               <li>Contact us</li>
-              <li>FAQs</li>
-              <li>Terms and conditions</li>
-              <li>Privacy policy</li>
+              <li>
+                <Link href="/FAQ">FAQs</Link>
+              </li>
+              <li>
+                <Link href="/terms">Terms & Conditions</Link>
+              </li>
+              <li>
+                <Link href="/privacy">Privacy Policy</Link>
+              </li>
               <li>Sitemap</li>
             </ul>
           </div>

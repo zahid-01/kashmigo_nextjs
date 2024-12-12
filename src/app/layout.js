@@ -1,10 +1,10 @@
 import "./globals.css";
 import Footer from "./footer/footer";
-import { Alegreya_Sans } from "next/font/google";
+import { Roboto } from "next/font/google";
 import Prov from "./Prov";
 import Navbar from "./navbar/navbar";
 
-const alegreya = Alegreya_Sans({
+const alegreya = Roboto({
   subsets: ["latin"],
   weight: ["100", "300", "400", "500", "700"],
 });

@@ -52,14 +52,7 @@ const BlogSection = () => {
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{blog.title}</h3>
                 <p className="text-gray-600 text-sm mb-4">{blog.excerpt}</p>
-                <Link href={`/blog/${blog.slug}`}>
-                  <Link
-                    href=""
-                    className="text-blue-600 hover:underline font-medium"
-                  >
-                    Read More →
-                  </Link>
-                </Link>
+                <Link href="">Read More →</Link>
               </div>
             </div>
           ))}

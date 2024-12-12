@@ -11,18 +11,23 @@ const CheckoutContent = () => {
   const date = searchParams.get("date");
   const people = searchParams.get("people");
   const id = searchParams.get("id");
+  const type = searchParams.get("type");
   const [error] = useState("");
   const [fullName, setFullName] = useState();
   const [email, setEmail] = useState();
   const [trxId, setTrxId] = useState();
   const [whatsAppNo, setWhatsAppNo] = useState();
+  const [data, setData] = useState();
 
   useEffect(() => {
     axios({
       method: "GET",
-      url: `${BASE_URI}/activities/single/${id}`,
+      url: `${BASE_URI}/${type}/single/${id}`,
     }).then(
       (res) => {
+        res.data.data.totalPrice = res.data.data.price * +people;
+        res.data.data.payable = res.data.data.totalPrice * 0.3;
+        setData(res.data.data);
         console.log(res.data.data);
         // setActivity(res.data.data);
         // setLoading(false);
@@ -33,7 +38,7 @@ const CheckoutContent = () => {
       }
     );
   }, [error, id]);
-
+  // const total = `${people}*${data.price}`;
   const handleCheckout = (e) => {
     e.preventDefault();
 
@@ -58,6 +63,7 @@ const CheckoutContent = () => {
     });
   };
 
+  if (!data) return <p>Loading</p>;
   return (
     <div className="bg-[#FEFCFB] min-h-screen py-10">
       <div className="max-w-7xl mx-auto px-4">
@@ -156,20 +162,20 @@ const CheckoutContent = () => {
                 <h3 className="font-bold">Bank Details</h3>
                 <p>
                   Account Number:{" "}
-                  <span className="font-semibold">0135041000002227</span>
+                  <span className="font-medium">0135041000002227</span>
                 </p>
                 <p>
-                  Bank Name: <span className="font-semibold">JK Bank</span>
+                  Bank Name: <span className="font-medium">JK Bank</span>
                 </p>
                 <p>
                   Branch Name:{" "}
-                  <span className="font-semibold">Jk Bank Qasba Hyhama</span>
+                  <span className="font-medium">Jk Bank Qasba Hyhama</span>
                 </p>
                 <p>
-                  IFSC: <span className="font-semibold">JAKA0HYHAMA</span>
+                  IFSC: <span className="font-medium">JAKA0HYHAMA</span>
                 </p>
                 <p>
-                  UPI: <span className="font-semibold">6006955146@axl</span>
+                  UPI: <span className="font-medium">6006955146@axl</span>
                 </p>
               </div>
               <div className="mt-6">
@@ -206,16 +212,14 @@ const CheckoutContent = () => {
           <div className="bg-white shadow-md rounded-lg p-6 md:h-[500px]">
             <h2 className="text-3xl font-bold mb-4">Your Booking</h2>
             <div className="border-t border-gray-300 pt-4">
-              <p className="text-3xl font-[300]">
-                Kashmir Tour Package for 6 days & 5 nights
-              </p>
+              <p className="text-3xl font-[300]">{data.packageName}</p>
               <div className="text-xl mt-2">
                 <p className="flex justify-between">
                   Departure Date: <span className="font-semibold">{date}</span>
                 </p>
                 <p className="flex justify-between">
                   Duration:{" "}
-                  <span className="font-semibold">6 days & 5 nights</span>
+                  <span className="font-semibold">{data.duration}</span>
                 </p>
                 <p className="flex justify-between">
                   Adults: <span className="font-semibold">{people}</span>
@@ -230,23 +234,18 @@ const CheckoutContent = () => {
             </div>
             <div className="border-t border-gray-300 pt-4">
               <div className="flex justify-between text-xl font-medium">
-                <p>Adult Price:</p>
-                <p>₹21,000</p>
-              </div>
-
-              <div className="flex justify-between text-xl font-medium">
                 <p>Sub Total:</p>
-                <p>₹96,000</p>
+                <p>{data.totalPrice}</p>
               </div>
               <div className="flex justify-between text-xl font-medium">
                 <p>Deposit:</p>
-                <p>₹28,800</p>
+                <p>₹ {data.payable}</p>
               </div>
             </div>
             <div className="border-t border-gray-300 pt-4">
               <div className="flex justify-between text-2xl font-bold">
                 <p>Payable Now:</p>
-                <p>₹28,800</p>
+                <p>₹ {data.payable}</p>
               </div>
             </div>
           </div>

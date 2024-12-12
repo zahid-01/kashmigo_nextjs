@@ -145,39 +145,38 @@ export default function Home() {
             </div>
           </section>
           <div className=" min-h-screen py-10">
-            <div className="relative mx-auto max-w-7xl">
+            <div className="relative mx-auto max-w-full lg:max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-center">
                 <Image
                   src={Mountain}
                   width={1170}
                   height={500}
                   alt="Mountain"
-                  className="object-cover"
+                  className="w-full h-auto object-cover"
                   priority
                 />
               </div>
-              <div className="absolute h-[275px] w-[1110px] mx-auto bottom-0 left-0 right-0 translate-y-1/2 bg-[#F9FDFF]  p-5 rounded-lg shadow-custom-green">
-                <div className="flex items-center justify-center my-8 gap-[70px]">
-                  <div className="flex-row items w-[464px] h-[116px]">
-                    <h1 className="text-4xl font-bold">Gulmarg</h1>
-                    <p className="mt-8 text-gray-600">
+              <div className="absolute w-full max-w-[90%] lg:w-[1110px] mx-auto bottom-0 left-0 right-0 translate-y-1/2 bg-[#F9FDFF] p-4 sm:p-5 rounded-lg shadow-custom-green">
+                <div className="flex flex-col lg:flex-row items-center lg:justify-center gap-4 lg:gap-[70px] my-4">
+                  <div className="w-full max-w-md lg:w-[464px]">
+                    <h1 className="text-2xl lg:text-4xl font-bold text-center lg:text-left">
+                      Gulmarg
+                    </h1>
+                    <p className="mt-4 lg:mt-8 text-gray-600 text-sm lg:text-base text-center lg:text-left">
                       Amet minim mollit non deserunt ullamco est sit aliqua
                       dolor do amet sint. Velit officia consequat duis enim
                       velit mollit. Exercitation veniam consequat sunt nostrud
                       amet.
                     </p>
                   </div>
-                  <div className="mt-0 mr-11 grid grid-cols-2 gap-2">
-                    <div className="col-span-2 h-[40px] w-[212px] flex items-center justify-center gap-[6px] bg-[#FFFFFF] shadow-custom-light text-[#D176E0]  rounded-[8px] font-mulish text-[14px] font-semibold leading-[17.57px]">
-                      <span>
-                        <FaBusAlt />
-                      </span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-2 lg:gap-4">
+                    <div className="col-span-2 h-[40px] w-full flex items-center justify-center gap-2 bg-white shadow-custom-light text-[#D176E0] rounded-lg font-mulish text-sm font-semibold">
+                      <FaBusAlt />
                       Public Transportations
                     </div>
-                    <div className="bg-[#FFFFFF] h-[40px] w-[196px] shadow-custom-light text-[#7BBCB0] flex items-center justify-center rounded-[8px] font-mulish text-[14px] font-bold leading-[17.57px] gap-2">
+                    <div className="h-[40px] w-full flex items-center justify-center gap-2 bg-white shadow-custom-light text-[#7BBCB0] rounded-lg font-mulish text-sm font-semibold">
                       <Image
                         alt="Nature & Adventure"
-                        className=""
                         height={20}
                         src={Nature}
                         width={20}
@@ -185,22 +184,17 @@ export default function Home() {
                       />
                       Nature & Adventure
                     </div>
-                    <div className="bg-[#FFFFFF] h-[40px] w-[224px] shadow-custom-light text-[#E4B613] flex items-center justify-center gap-[6px] rounded-[8px] font-mulish text-[14px] font-semibold leading-[17.57px]">
-                      <span>
-                        <BsTaxiFrontFill />
-                      </span>
+                    <div className="h-[40px] w-full flex items-center px-4 justify-center gap-2 bg-white shadow-custom-light text-[#E4B613] rounded-lg font-mulish text-sm font-semibold">
+                      <BsTaxiFrontFill />
                       Private Transportations
                     </div>
-                    <div className="bg-[#FFFFFF] h-[40px] w-[160px] shadow-custom-light text-[#FE3131] flex items-center justify-center gap-[6px] rounded-[8px] font-mulish text-[14px] font-semibold leading-[17.57px]">
-                      <span>
-                        <BiSolidBriefcase />
-                      </span>
+                    <div className="h-[40px] w-full flex items-center px-4 justify-center gap-2 bg-white shadow-custom-light text-[#FE3131] rounded-lg font-mulish text-sm font-semibold">
+                      <BiSolidBriefcase />
                       Business Tours
                     </div>
-                    <div className="bg-[#FFFFFF] h-[40px] w-[130px] shadow-custom-light text-[#5C9BDE] flex items-center justify-center rounded-[8px] font-mulish text-[14px] font-semibold leading-[17.57px] gap-2">
+                    <div className="h-[40px] w-full flex items-center justify-center gap-2 bg-white shadow-custom-light text-[#5C9BDE] rounded-lg font-mulish text-sm font-semibold">
                       <Image
                         alt="Local Visit"
-                        className="w-auto h-auto"
                         height={20}
                         src={Local}
                         width={20}
@@ -224,19 +218,18 @@ export default function Home() {
           </div>
         </div>
 
-        <section className="relative h-[525px] flex items-center mx-auto bg-gradient-to-r from-purple-500 to-teal-500">
+        <section className="relative h-auto md:h-[525px] flex items-center mx-auto bg-gradient-to-r from-purple-500 to-teal-500">
           <div className="absolute inset-0">
             <Image
               src={Full}
               alt="Background"
-              // width={1340}
               height={590}
-              className="opacity-50"
+              className="opacity-50 object-cover w-full h-full"
               priority
             />
           </div>
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-8 gap-12">
-            <div className=" w-[250px] h-[247px] mr-12">
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-4 md:px-8 gap-8 md:gap-[100px]">
+            <div className="relative w-[200px] md:w-[250px] h-[200px] md:h-[247px] md:mr-40 ">
               <Image
                 src={overlap1}
                 alt="Tour"
@@ -250,7 +243,7 @@ export default function Home() {
                 alt="Tour"
                 width={250}
                 height={246.9}
-                className="absolute top-6 left-6 rounded-lg z-20"
+                className="absolute top-4 md:top-6 left-4 md:left-6 rounded-lg z-20"
                 priority
               />
               <Image
@@ -258,34 +251,33 @@ export default function Home() {
                 alt="Tour"
                 width={250}
                 height={246.9}
-                className="absolute top-12 left-12 rounded-lg z-30"
+                className="absolute top-8 md:top-12 left-8 md:left-12 rounded-lg z-30"
                 priority
               />
             </div>
-            <div className="flex-row  ml-12 text-white">
-              <span className="bg-[#56C2C3] text-sm px-3 py-1 rounded-full font-bold">
+            <div className="flex flex-col text-center md:text-left items-center md:items-start text-white">
+              <span className="bg-[#56C2C3] text-xs md:text-sm px-3 py-1 rounded-full font-bold">
                 Trending Now
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold mt-4">
+              <h1 className="text-2xl md:text-4xl font-bold mt-4">
                 Wildlife of Gulmarg
               </h1>
-              <div className="text-gray-100 flex items-center justify-between  mt-4">
-                {/* <i className="fas fa-map-marker-alt text-yellow-400"></i> */}
+              <div className="text-gray-100 flex flex-col md:flex-row items-center md:justify-between mt-4 space-y-2 md:space-y-0">
                 <span className="font-semibold">Gulmarg, Baramulla</span>
-                <div>
-                  <span className=" text-[#FFA432]">★★★★★</span>
+                <div className="flex items-center space-x-2">
+                  <span className="text-[#FFA432]">★★★★★</span>
                   <span>4.9</span>
-                  <i className="fas fa-star text-yellow-400 mx-1"></i>
                   <span className="text-gray-200">(300 reviews)</span>
                 </div>
               </div>
-              <p className="mt-5">
+              <p className="mt-5 text-sm md:text-base text-center md:text-left leading-relaxed">
                 Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                <br />
+                <br className="hidden md:block" />
                 amet sint. Velit officia consequat duis enim velit mollit.
-                Exercitation <br /> veniam consequat sunt nostrud amet.
+                <br className="hidden md:block" />
+                Exercitation veniam consequat sunt nostrud amet.
               </p>
-              <button className="w-[200px] h-[50px] bg-signup-gradient px-6 py-3 text-white font-bold rounded-full mt-8">
+              <button className="w-full md:w-[200px] h-[50px] bg-signup-gradient px-6 py-3 text-white font-bold rounded-full mt-8">
                 Book Now
               </button>
             </div>

@@ -29,7 +29,6 @@ function ContactForm() {
               Planning Your Next Adventure? Let's Make It Unforgettable! Have a
               travel dream or destination in mind? Reach out to us—we'd love to
               bring your journey to life with seamless planning and bookings.
-              :earth_americas::aeroplane:
             </p>
           </div>
           <div className="flex flex-col h-[85px]">
@@ -44,7 +43,7 @@ function ContactForm() {
           <div className="flex flex-col h-[85px] w-[185px]">
             <p className="text-[36px] font-[500]">Phone No</p>
             <a href="tel:+1234567890" className="text-blue-500 text-[18px]">
-              +919999999999
+              +91 6006354443
             </a>
           </div>
         </div>

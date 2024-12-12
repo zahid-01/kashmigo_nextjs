@@ -38,7 +38,7 @@ const BookingForm = ({ tour }) => {
       numberOfPeople,
     };
     router.push(
-      `/checkout?date=${startDate}&people=${numberOfPeople}&id=${tour.id}`
+      `/checkout?date=${startDate}&people=${numberOfPeople}&id=${tour.id}&type=tours`
     );
     // router.push({
     //   pathname: "/checkout",
@@ -65,7 +65,6 @@ const BookingForm = ({ tour }) => {
     <div className="w-[470px] lg:pl-4 ">
       <div className="bg-[white] p-6 rounded-lg shadow-md">
         <h2 className="text-[36px] font-medium text-[#1C2B38] border-b mb-4">
-
           Booking
         </h2>
         <div className="mb-4">

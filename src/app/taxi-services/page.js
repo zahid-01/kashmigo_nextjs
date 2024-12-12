@@ -41,7 +41,7 @@ const TaxiServices = () => {
             options in Kashmir, KashmiGo is <br /> your trusted choice.
           </p>
           <Link
-            href="https://wa.me/9622729348"
+            href="https://wa.me/916006354443"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -111,7 +111,7 @@ const TaxiServices = () => {
           With <span className="text-[#56C2C3]">KashmiGo,</span> reservations
           for taxi services in Kashmir can be made in advance. You can simply
           make a reservation for your Kashmir cab by calling our reservation
-          team at <span className="text-[#56C2C3]">+919999999999</span> 
+          team at <span className="text-[#56C2C3]">+91 6006354443</span> 
         </h2>
       </div>
     </div>
