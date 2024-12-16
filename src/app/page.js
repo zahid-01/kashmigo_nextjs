@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+
 import Mountain from "../../public/assets/mountains.png";
 import Image1 from "../../public/assets/Image.png";
 import Nature from "../../public/assets/nature.png";
@@ -25,6 +26,9 @@ import { BASE_URI } from "./web/beConfig";
 import TourCards from "./components/TourCards";
 import Link from "next/link";
 import Gallery from "./components/Gallery";
+// import AllTours from "../../../public/assets/all-tours.png";
+import AllTours from "../../public/assets/all-tours.png";
+import Activity from "./components/Activity";
 
 export default function Home() {
   const [tours, setTours] = useState([]);
@@ -74,7 +78,7 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="mt-12 mx-24 p-4 bg-[#FFFFFF] rounded-lg flex flex-col md:flex-row items-center justify-between shadow-custom-light">
+            {/* <div className="mt-12 mx-24 p-4 bg-[#FFFFFF] rounded-lg flex flex-col md:flex-row items-center justify-between shadow-custom-light">
               <div className="flex flex-col items-start mb-4 md:mb-0">
                 <i className="flex gap-2 fas fa-map-marker-alt text-[#56C2C3] font-bold">
                   <FaLocationDot className="text-[#56C2C3] text-[18px] font-bold leading-[21.6px]" />
@@ -114,15 +118,14 @@ export default function Home() {
               <button className="px-6 py-3 bg-signup-gradient text-white font-bold rounded-full">
                 Search
               </button>
-            </div>
+            </div> */}
           </div>
           <section className="container mx-auto p-8">
             <h2 className="text-3xl font-bold text-center">
               Explore Popular Cities
             </h2>
             <p className="text-center text-[16px] text-[#778088] font-medium leading-[17.57px] mt-4">
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-              amet sint. Velit officia <br></br>consequat duis enim velit mollit
+              Your next adventure is just a city away – start exploring now!
             </p>
             <div className="flex flex-wrap justify-center mt-6">
               {[
@@ -146,7 +149,7 @@ export default function Home() {
           </section>
           <div className=" min-h-screen py-10">
             <div className="relative mx-auto max-w-full lg:max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center ">
                 <Image
                   src={Mountain}
                   width={1170}
@@ -162,11 +165,11 @@ export default function Home() {
                     <h1 className="text-2xl lg:text-4xl font-bold text-center lg:text-left">
                       Gulmarg
                     </h1>
-                    <p className="mt-4 lg:mt-8 text-gray-600 text-sm lg:text-base text-center lg:text-left">
-                      Amet minim mollit non deserunt ullamco est sit aliqua
-                      dolor do amet sint. Velit officia consequat duis enim
-                      velit mollit. Exercitation veniam consequat sunt nostrud
-                      amet.
+                    <p className="mt-4 lg:mt-6 text-gray-600 text-sm lg:text-base text-center lg:text-left">
+                      Set amidst the majestic Himalayas, Gulmarg is a paradise
+                      of snow, meadows, and adventure. From skiing on
+                      world-class slopes to soaking in breathtaking views, it’s
+                      the perfect blend of thrill and tranquility.
                     </p>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-2 lg:gap-4">
@@ -229,7 +232,7 @@ export default function Home() {
             />
           </div>
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-4 md:px-8 gap-8 md:gap-[100px]">
-            <div className="relative w-[200px] md:w-[250px] h-[200px] md:h-[247px] md:mr-40 ">
+            <div className="relative w-[200px] md:w-[250px] h-[200px] md:h-[247px] md:mr-40">
               <Image
                 src={overlap1}
                 alt="Tour"
@@ -271,15 +274,22 @@ export default function Home() {
                 </div>
               </div>
               <p className="mt-5 text-sm md:text-base text-center md:text-left leading-relaxed">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+                Explore the untamed beauty of Gulmarg’s wildlife, where pristine
+                nature meets diverse fauna. <br className="hidden md:block" />
+                A serene escape into the heart of Baramulla, it promises
+                adventure, breathtaking views, and
                 <br className="hidden md:block" />
-                amet sint. Velit officia consequat duis enim velit mollit.
-                <br className="hidden md:block" />
-                Exercitation veniam consequat sunt nostrud amet.
+                unforgettable moments.
               </p>
-              <button className="w-full md:w-[200px] h-[50px] bg-signup-gradient px-6 py-3 text-white font-bold rounded-full mt-8">
-                Book Now
-              </button>
+              <Link
+                href="https://wa.me/916006354443"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="w-full md:w-[200px] h-[50px] bg-signup-gradient px-6 py-3 text-white font-bold rounded-full mt-8">
+                  Book Now
+                </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -290,9 +300,9 @@ export default function Home() {
             <div>
               <h2 className="text-3xl font-bold mb-4">Trending Activities</h2>
               <p className="text-gray-600 mb-8">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                amet sint.<br></br> Velit officia consequat duis enim velit
-                mollit.
+                Dive into exciting experiences that are capturing everyone's
+                attention! From adrenaline-filled adventures <br /> to relaxing
+                escapes, find activities that suit every mood and moment.
               </p>
             </div>
             <div className="flex items-center space-x-4 ">
@@ -300,46 +310,9 @@ export default function Home() {
               <IoChevronForwardCircleOutline className="w-[50px] h-[50px] cursor-pointer border-none text-white rounded-full bg-[#56C2C3] transition duration-300 border" />
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {Array(4)
-              .fill(0)
-              .map((_, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-lg shadow-lg overflow-hidden"
-                >
-                  <div className="relative group">
-                    <Image
-                      src={Mountain}
-                      width={500}
-                      height={300}
-                      alt="Alaska"
-                      className="w-full h-40 object-cover transition-transform duration-1000 group-hover:scale-110"
-                      priority
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="text-lg font-semibold text-gray-800">
-                      Alaska: Westminster to Greenwich River Thames
-                    </h3>
-                    <ul className="mt-2 text-sm text-gray-600 space-y-1">
-                      <li>Duration: 2 hours</li>
-                    </ul>
-                    <div className="mt-4 flex items-center justify-between">
-                      <div>
-                        <span className="text-sm text-[#FFA432]">★★★★☆</span>
-                        <span className="text-sm text-gray-500 ml-2">
-                          584 reviews
-                        </span>
-                      </div>
 
-                      <span className="text-[#56C2C3] font-bold">
-                        from $35.00
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-12  px-4 lg:py-12 sm:px-6 lg:px-8">
+            <Activity />
           </div>
         </section>
         <div className="flex-col items-center bg-[#FEFCFB] justify-center mx-8 p-8 mt-12 gap-5">
@@ -349,9 +322,11 @@ export default function Home() {
                 From The Gallery
               </h2>
               <p className="text-gray-600 mt-2">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                amet sint.
-                <br /> Velit officia consequat duis enim velit mollit
+                Step into a world of captivating moments captured through the
+                lens! Explore stunning visuals
+                <br /> that showcase the beauty, adventure, and charm waiting to
+                be discovered.
+                <br /> Click 'View All Images' to see the full story unfold.
               </p>
             </div>
             <button className="bg-signup-gradient text-white px-4 py-2 rounded-lg ">

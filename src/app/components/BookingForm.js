@@ -29,7 +29,7 @@ const BookingForm = ({ tour }) => {
 
   const handleBooking = async () => {
     if (!startDate || !numberOfPeople) {
-      return setErr("Provide all the required details");
+      return setError("Provide all the required details");
     }
 
     const payload = {
